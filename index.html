@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📦 Gói Hàng Cute 2.0 — Deluxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#ffb3d1; --pink-deep:#ff7fb0; --pink-soft:#ffe4ef;
+  --mint:#a8e6cf; --mint-deep:#5fcf9e;
+  --lav:#c9b6ff; --lav-deep:#9b7bff;
+  --cream:#fff6ec; --sun:#ffd97d; --sun-deep:#ffb347;
+  --brown:#6b4f4f; --brown-soft:#9b8181;
+  --card:#ffffffdd;
+  --sh:0 6px 0 rgba(160,130,150,.13), 0 10px 24px rgba(180,150,180,.18);
+  --sh-sm:0 4px 0 rgba(160,130,150,.12), 0 6px 14px rgba(180,150,180,.14);
+}
+html,body{height:100%}
+body{
+  font-family:'Quicksand',system-ui,sans-serif;color:var(--brown);
+  background:
+    radial-gradient(circle at 8% 10%, #ffe4f3 0%, transparent 45%),
+    radial-gradient(circle at 92% 8%, #e2f4ff 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, #e8ffef 0%, transparent 55%),
+    linear-gradient(160deg,#fff6fb 0%,#f3f9ff 50%,#f4fff8 100%);
+  background-attachment:fixed;min-height:100vh;padding:12px;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Baloo 2',cursive;font-weight:700;letter-spacing:.2px}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+textarea{font-family:inherit}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#f0d5e6;border-radius:20px}
+::-webkit-scrollbar-thumb:hover{background:var(--pink)}
+.game{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+
+.topbar{background:var(--card);backdrop-filter:blur(12px);border-radius:26px;padding:10px 16px;box-shadow:var(--sh);display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:2px solid #fff}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{font-size:32px;line-height:1;filter:drop-shadow(0 3px 0 rgba(0,0,0,.08));animation:wobble 2.6s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(6deg) scale(1.08)}}
+.brand h1{font-size:20px;line-height:1;background:linear-gradient(90deg,var(--pink-deep),var(--lav-deep),var(--mint-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .sub{font-size:11px;color:var(--brown-soft);font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.stat{display:flex;align-items:center;gap:6px;background:linear-gradient(180deg,#fff,#fff3f8);border:2px solid #ffe6f2;border-radius:16px;padding:5px 12px;font-weight:700;font-size:14px;box-shadow:var(--sh-sm);transition:transform .15s}
+.stat:hover{transform:translateY(-2px)}
+.stat span{font-size:16px}
+.stat b{font-family:'Baloo 2';font-size:16px;color:var(--pink-deep)}
+.xpwrap{display:flex;flex-direction:column;gap:3px;min-width:150px}
+.xpbar{height:12px;background:#ffe9f4;border-radius:20px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(200,150,180,.18)}
+.xpbar i{display:block;height:100%;width:0%;border-radius:20px;background:linear-gradient(90deg,var(--sun),var(--pink-deep));transition:width .45s cubic-bezier(.34,1.56,.64,1)}
+.xpwrap small{font-size:10.5px;font-weight:700;color:var(--brown-soft);text-align:center}
+.icon-btn{width:42px;height:42px;border-radius:14px;background:#fff;border:2px solid #ffe6f2;font-size:18px;box-shadow:var(--sh-sm);transition:.15s}
+.icon-btn:hover{transform:translateY(-2px) rotate(-6deg)}
+.icon-btn:active{transform:translateY(1px)}
+.icon-btn.on{background:linear-gradient(180deg,#fff2f8,#ffd9ec);border-color:#ffc9df}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{position:relative;padding:10px 18px;border-radius:18px 18px 6px 6px;background:#ffffffaa;border:2px solid #fff;font-weight:700;font-size:14px;color:var(--brown-soft);box-shadow:var(--sh-sm);transition:.18s}
+.tab:hover{transform:translateY(-3px);color:var(--brown)}
+.tab.active{background:linear-gradient(180deg,#fff,#ffeaf4);color:var(--pink-deep);border-color:#ffd3e6;transform:translateY(-3px)}
+.tab .badge{display:inline-block;min-width:20px;padding:0 6px;margin-left:4px;background:var(--pink-deep);color:#fff;border-radius:20px;font-size:11px;font-weight:800;box-shadow:0 2px 0 rgba(0,0,0,.1)}
+.tab .badge:empty,.tab .badge[data-zero="1"]{display:none}
+
+.view{display:none;animation:fadeUp .35s ease}
+.view.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.panel{background:var(--card);backdrop-filter:blur(12px);border:2px solid #fff;border-radius:24px;padding:16px;box-shadow:var(--sh)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.panel-head h2{font-size:19px}
+.muted{color:var(--brown-soft);font-weight:600;font-size:14px;text-align:center;padding:24px 10px}
+
+.btn{padding:10px 18px;border-radius:16px;font-weight:800;font-size:14px;transition:.15s;border:2px solid transparent;display:inline-flex;align-items:center;gap:6px;justify-content:center}
+.btn.primary{background:linear-gradient(180deg,#ffc3dd,var(--pink-deep));color:#fff;box-shadow:0 4px 0 #e05b90, 0 8px 18px rgba(255,127,176,.4)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 #e05b90,0 10px 22px rgba(255,127,176,.45)}
+.btn.primary:active{transform:translateY(3px);box-shadow:0 1px 0 #e05b90}
+.btn.primary:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:0 4px 0 #c9a5b6;filter:grayscale(.4)}
+.btn.mint{background:linear-gradient(180deg,#c2f3dd,var(--mint-deep));color:#fff;box-shadow:0 4px 0 #3fae7e,0 8px 18px rgba(95,207,158,.35)}
+.btn.mint:hover{transform:translateY(-2px)}
+.btn.ghost{background:#fff;border-color:#ffe0ee;color:var(--brown);box-shadow:var(--sh-sm)}
+.btn.ghost:hover{transform:translateY(-2px);border-color:#ffc9df}
+.btn.lav{background:linear-gradient(180deg,#ddcfff,var(--lav-deep));color:#fff;box-shadow:0 4px 0 #7a5bcc}
+.btn.lav:hover{transform:translateY(-2px)}
+.btn.tiny{padding:6px 12px;font-size:12px;border-radius:12px}
+.btn:active{transform:translateY(2px)}
+
+.order-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.order-card{background:linear-gradient(180deg,#fff,#fffafd);border:2px solid #ffe9f4;border-radius:20px;padding:13px;box-shadow:var(--sh-sm);transition:.2s;position:relative;overflow:hidden;animation:pop .35s cubic-bezier(.34,1.56,.64,1) backwards}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.order-card:hover{transform:translateY(-4px);box-shadow:0 8px 0 rgba(160,130,150,.12),0 14px 26px rgba(180,150,180,.22);border-color:#ffd0e6}
+.order-card::after{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#ffe9f4,transparent 70%)}
+.order-card.big-order{border-color:#ffc9a5;background:linear-gradient(180deg,#fff,#fff8f0)}
+.order-card.big-order::before{content:'📦 ĐƠN LỚN';position:absolute;top:9px;right:9px;background:var(--sun-deep);color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:20px;z-index:2;box-shadow:0 2px 0 #cc8a2a}
+.oc-head{display:flex;align-items:center;gap:9px;margin-bottom:9px;position:relative;z-index:1}
+.ava{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:linear-gradient(180deg,#fff0f8,#ffd9ec);box-shadow:inset 0 -3px 0 rgba(0,0,0,.05)}
+.oc-head b{font-family:'Baloo 2';font-size:15px;display:block;line-height:1.15}
+.oc-head small{font-size:11px;color:var(--brown-soft);font-weight:600}
+.tag-person{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:20px;background:#e9f7ff;color:#3a8fc7;margin-left:4px;vertical-align:middle}
+.oc-items{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0;position:relative;z-index:1}
+.chip{background:#f6f2ff;border:1.5px solid #e7ddff;border-radius:11px;padding:3px 8px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px}
+.chip .e{font-size:15px}
+.oc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1;margin-top:6px}
+.reward{font-family:'Baloo 2';font-weight:800;color:var(--sun-deep);font-size:16px}
+.dist{font-size:11px;color:var(--brown-soft);font-weight:700}
+.perfume-ask{margin-top:8px;padding:7px 10px;border-radius:12px;background:linear-gradient(90deg,#f0e9ff,#ffe9f6);border:1.5px dashed #c9b6ff;font-size:11.5px;font-weight:700;color:#6b3faf;display:flex;align-items:center;gap:6px;position:relative;z-index:1}
+.perfume-ask .icon{font-size:15px}
+
+.pack-layout{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:12px;align-items:start}
+.shelf-panel h3,.decor-panel h3{font-size:16px;margin-bottom:10px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:8px;max-height:520px;overflow-y:auto;padding-right:4px}
+.shelf-item{background:linear-gradient(180deg,#fff,#fdf7ff);border:2px solid #f0e6ff;border-radius:16px;padding:7px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;transition:.15s;box-shadow:var(--sh-sm)}
+.shelf-item:hover{transform:translateY(-4px) scale(1.05);border-color:#dcc9ff;background:#fff}
+.shelf-item:active{transform:scale(.94)}
+.shelf-item .emoji{font-size:26px;line-height:1}
+.shelf-item .nm{font-size:9.5px;font-weight:700;color:var(--brown-soft);text-align:center;line-height:1.1}
+.shelf-item.done{opacity:.35;pointer-events:none;filter:grayscale(.7)}
+
+.box-panel{display:flex;flex-direction:column;gap:12px;min-height:560px}
+.pack-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#fffafd;border:2px dashed #ffd9ec;border-radius:16px;padding:9px 12px}
+.pack-head .who{font-weight:800;font-size:14px;display:flex;align-items:center;gap:7px}
+.pack-progress{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13px;color:var(--brown-soft)}
+.progress{width:110px;height:12px;background:#f1eaf7;border-radius:20px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.06)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--mint-deep));border-radius:20px;transition:width .4s cubic-bezier(.34,1.56,.64,1)}
+
+.task-note{background:linear-gradient(180deg,#fffde8,#fff6b8);border:2px solid #f0dd7a;border-radius:14px;padding:9px 12px;font-size:12px;font-weight:700;color:#7a5e15;box-shadow:0 4px 0 rgba(200,170,60,.2),0 6px 14px rgba(200,170,60,.15);position:relative}
+.task-note::before{content:'';position:absolute;top:-8px;left:20px;width:50px;height:14px;background:#f5c8d8;border-radius:2px;transform:rotate(-3deg);box-shadow:0 2px 4px rgba(0,0,0,.1)}
+.task-note h4{font-family:'Baloo 2';font-size:13px;color:#8a6d1e;margin-bottom:4px}
+.task-note ul{list-style:none;font-size:11.5px;line-height:1.5}
+.task-note ul li{display:flex;align-items:center;gap:4px}
+.task-note .pf-line{margin-top:5px;padding-top:5px;border-top:1px dashed #f0dd7a;font-size:11.5px;color:#8a4f9b}
+.task-note .pf-line b{color:#6b2faf}
+
+.box-stage{flex:1;display:grid;place-items:center;padding:32px 8px 8px;position:relative;min-height:260px}
+.box-stage::before{content:'';position:absolute;width:260px;height:60px;bottom:18px;border-radius:50%;background:radial-gradient(ellipse,rgba(190,160,190,.28),transparent 70%)}
+.box{position:relative;width:250px;height:200px;border-radius:14px 14px 18px 18px;background:linear-gradient(180deg,#f9dcbb,#e9bf95);box-shadow:inset 0 -16px 0 rgba(0,0,0,.07), inset 0 6px 0 rgba(255,255,255,.35),0 14px 0 rgba(160,120,90,.22), 0 22px 34px rgba(150,110,90,.28);transition:width .4s, height .4s, background .35s;z-index:2;overflow:hidden}
+.box.big{width:320px;height:250px}
+.box.big .box-item{font-size:34px}
+.box.big .box-sticker{font-size:24px}
+.box.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px) rotate(-2deg)}40%{transform:translateX(9px) rotate(2deg)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.box-wrap{position:absolute;inset:0;border-radius:14px;pointer-events:none;opacity:.55}
+.box-flaps{position:absolute;top:-22px;left:0;width:100%;height:26px;pointer-events:none;z-index:5}
+.box-flaps i{position:absolute;bottom:0;width:50%;height:100%;background:linear-gradient(180deg,#ffe9d0,#f2cfa6);box-shadow:inset 0 3px 0 rgba(255,255,255,.5);transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.box-flaps i:first-child{left:0;border-radius:8px 4px 0 0;transform-origin:left bottom;transform:rotate(-16deg) translateY(-3px)}
+.box-flaps i:last-child{right:0;border-radius:4px 8px 0 0;transform-origin:right bottom;transform:rotate(16deg) translateY(-3px)}
+.box.sealed .box-flaps i:first-child{transform:rotate(0) translateY(0)}
+.box.sealed .box-flaps i:last-child{transform:rotate(0) translateY(0)}
+.box-items{position:absolute;inset:0;border-radius:14px;z-index:3}
+.box-item{position:absolute;font-size:28px;line-height:1;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2));cursor:grab;user-select:none;touch-action:none;transform-origin:center center;transition:filter .15s}
+.box-item:active{cursor:grabbing;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+.box-item.dragging{z-index:20}
+.box-stickers{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none;z-index:4}
+.box-sticker{position:absolute;font-size:20px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+.ribbon{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .35s;z-index:6}
+.ribbon.on{opacity:1}
+.ribbon::before{content:'';position:absolute;left:50%;top:0;width:15%;height:100%;transform:translateX(-50%);background:var(--rb);box-shadow:inset -6px 0 8px rgba(0,0,0,.12)}
+.ribbon::after{content:'';position:absolute;top:44%;left:0;width:100%;height:15%;transform:translateY(-50%);background:var(--rb);box-shadow:inset 0 -6px 8px rgba(0,0,0,.12)}
+.ribbon .bow{position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:30px;z-index:3;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2))}
+.note-card{position:absolute;top:14%;right:8%;width:66px;background:linear-gradient(180deg,#fffde0,#fff6b0);border:1.5px solid #f0dd7a;border-radius:6px;padding:4px 5px;font-size:7.5px;font-weight:700;color:#8a6d1e;box-shadow:0 4px 6px rgba(0,0,0,.15);transform:rotate(9deg);z-index:7;line-height:1.2;max-height:60px;overflow:hidden;display:none}
+.note-card.show{display:block;animation:drop .4s}
+.scent-hint{position:absolute;top:6%;left:8%;font-size:18px;z-index:7;display:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.15))}
+.scent-hint.show{display:block;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.pack-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+
+.decor-panel{max-height:640px;overflow-y:auto}
+.decor-section{margin-bottom:12px;border-bottom:1px dashed #f0e6ff;padding-bottom:11px}
+.decor-section:last-child{border-bottom:none}
+.decor-section label{font-size:11px;font-weight:800;color:var(--brown-soft);text-transform:uppercase;letter-spacing:.9px;display:block;margin-bottom:7px}
+.swatches{display:flex;gap:7px;flex-wrap:wrap}
+.swatch{width:32px;height:32px;border-radius:12px;border:3px solid #fff;box-shadow:0 3px 0 rgba(0,0,0,.12);transition:.15s}
+.swatch:hover{transform:translateY(-3px) scale(1.08)}
+.swatch.active{outline:3px solid var(--pink-deep);outline-offset:2px;transform:scale(1.08)}
+.wraps{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px}
+.wrap-btn{aspect-ratio:1;border-radius:10px;border:3px solid #fff;box-shadow:0 3px 0 rgba(0,0,0,.12);position:relative;transition:.15s;overflow:hidden}
+.wrap-btn:hover{transform:translateY(-3px) scale(1.08)}
+.wrap-btn.active{outline:3px solid var(--pink-deep);outline-offset:2px}
+.wrap-btn .lbl{position:absolute;bottom:0;left:0;right:0;font-size:7.5px;font-weight:800;background:#ffffffcc;padding:1px;text-align:center;color:var(--brown)}
+.ribbons{display:flex;gap:7px;flex-wrap:wrap}
+.ribbon-btn{width:32px;height:32px;border-radius:12px;border:3px solid #fff;position:relative;box-shadow:0 3px 0 rgba(0,0,0,.12);transition:.15s;display:grid;place-items:center;font-size:15px}
+.ribbon-btn:hover{transform:translateY(-3px) scale(1.08)}
+.ribbon-btn.active{outline:3px solid var(--pink-deep);outline-offset:2px;transform:scale(1.08)}
+.ribbon-btn.none{background:#f4f0f6;color:#bbb}
+.stickers{display:flex;gap:5px;flex-wrap:wrap;max-height:170px;overflow-y:auto;padding:2px}
+.sticker-btn{width:34px;height:34px;border-radius:11px;background:#fff;border:2px solid #f0e6ff;font-size:18px;display:grid;place-items:center;transition:.15s;box-shadow:var(--sh-sm)}
+.sticker-btn:hover{transform:translateY(-3px) rotate(-8deg) scale(1.1);border-color:#dcc9ff}
+.sticker-btn:active{transform:scale(.9)}
+.perfumes{display:flex;gap:6px;flex-wrap:wrap}
+.perfume-btn{width:38px;height:38px;border-radius:12px;background:#fff;border:2px solid #f0e6ff;font-size:19px;display:grid;place-items:center;transition:.15s;box-shadow:var(--sh-sm);position:relative}
+.perfume-btn:hover{transform:translateY(-3px) scale(1.1)}
+.perfume-btn.active{outline:3px solid #b28cff;outline-offset:2px;background:#f6f0ff}
+.perfume-btn.req::after{content:'⭐';position:absolute;top:-6px;right:-6px;font-size:11px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.note-input{width:100%;border:2px solid #f0e6ff;border-radius:14px;padding:8px 10px;font-size:12px;font-weight:600;background:#fffdf5;color:var(--brown);resize:vertical;min-height:60px;font-family:'Quicksand'}
+.note-input:focus{outline:none;border-color:var(--lav-deep)}
+.note-templates{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tmpl-btn{font-size:10.5px;padding:4px 9px;border-radius:10px;background:#f6f0ff;border:1.5px solid #e7ddff;font-weight:700;color:var(--lav-deep);transition:.15s}
+.tmpl-btn:hover{background:#ede2ff;transform:translateY(-2px)}
+
+.map-layout{display:grid;grid-template-columns:1fr 320px;gap:12px;align-items:start}
+.map-panel{padding:10px}
+.map{position:relative;width:100%;aspect-ratio:16/10;min-height:400px;background:radial-gradient(circle at 15% 22%, #dcf7c9 0%, transparent 42%),radial-gradient(circle at 85% 72%, #d3f0ff 0%, transparent 45%),radial-gradient(circle at 55% 45%, #eefbe0 0%, transparent 55%),#eaf8db;border-radius:20px;overflow:hidden;border:4px solid #fff;box-shadow:inset 0 0 50px rgba(120,160,110,.12)}
+.map::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#c8e8b0 1.5px,transparent 1.5px);background-size:26px 26px;opacity:.45}
+.road{position:absolute;background:#ddd6ca;box-shadow:inset 0 0 0 2px #cfc6b6}
+.road.v{width:7.5%;height:100%;top:0;transform:translateX(-50%)}
+.road.h{height:9%;width:100%;left:0;transform:translateY(-50%)}
+.road.h::after{content:'';position:absolute;top:50%;left:0;width:100%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,#fff 0 12px,transparent 12px 26px);opacity:.75}
+.road.v::after{content:'';position:absolute;left:50%;top:0;width:3px;height:100%;transform:translateX(-50%);background:repeating-linear-gradient(180deg,#fff 0 12px,transparent 12px 26px);opacity:.75}
+.house{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:3;transition:.3s;filter:drop-shadow(0 3px 3px rgba(0,0,0,.15))}
+.house .h-emoji{font-size:27px;line-height:1;display:block}
+.house .h-name{font-size:8.5px;font-weight:800;background:#ffffffdd;border-radius:8px;padding:1px 5px;margin-top:2px;white-space:nowrap;color:var(--brown-soft);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.house.target .h-emoji{animation:bounce .7s infinite}
+.house.target::after{content:'';position:absolute;inset:-12px -14px;border-radius:50%;border:3px dashed var(--pink-deep);animation:spin 4s linear infinite;opacity:.85}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.shop-house{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:4}
+.shop-house .h-emoji{font-size:32px;display:block;animation:wobble 3s ease-in-out infinite}
+.shop-house .h-name{font-size:9px;font-weight:800;background:var(--sun);color:#fff;border-radius:8px;padding:1px 6px;box-shadow:0 2px 0 #e09a2c}
+#shipper{position:absolute;font-size:30px;transform:translate(-50%,-50%);z-index:8;filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))}
+#shipper.returning{transition:left 1.2s ease-in-out, top 1.2s ease-in-out}
+#shipper .bubble{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:#fff;border-radius:10px;padding:2px 7px;font-size:10px;font-weight:800;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.15);color:var(--pink-deep)}
+.deliver-panel h3{font-size:16px;margin-bottom:10px}
+.deliver-card{background:linear-gradient(180deg,#fff,#fdfaff);border:2px solid #f0e6ff;border-radius:18px;padding:11px;margin-bottom:10px;box-shadow:var(--sh-sm);animation:pop .3s backwards}
+.dc-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dc-head .ava{width:36px;height:36px;font-size:19px;border-radius:12px}
+.dc-head b{font-family:'Baloo 2';font-size:14px;display:block;line-height:1.1}
+.dc-head small{font-size:10.5px;color:var(--brown-soft);font-weight:700}
+.dc-body{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px;font-weight:800}
+.dc-body .coin{color:var(--sun-deep);font-family:'Baloo 2';font-size:15px}
+.deliver-card .btn{width:100%}
+
+.review-list{display:grid;gap:10px}
+.review-card{background:linear-gradient(180deg,#fff,#fdfaff);border:2px solid #f0e6ff;border-radius:18px;padding:12px;box-shadow:var(--sh-sm);animation:pop .3s backwards;position:relative}
+.review-card.unread{border-color:#ffc9df;background:linear-gradient(180deg,#fff,#fff4fa)}
+.review-card.unread::before{content:'MỚI';position:absolute;top:-8px;right:12px;background:var(--pink-deep);color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:20px;box-shadow:0 2px 4px rgba(255,127,176,.5)}
+.rc-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rc-head .ava{width:42px;height:42px;font-size:22px;border-radius:14px}
+.rc-head b{font-family:'Baloo 2';font-size:14px;display:block}
+.rc-head small{font-size:11px;color:var(--brown-soft);font-weight:600}
+.rc-stars{color:var(--sun-deep);font-size:15px;margin-left:auto;letter-spacing:1px}
+.rc-text{font-size:13px;font-weight:600;color:var(--brown);background:#faf6ff;border-radius:12px;padding:9px 11px;margin:6px 0;line-height:1.4}
+.rc-reply{font-size:12.5px;font-weight:600;background:#eaf7ff;border-radius:12px;padding:8px 11px;margin-top:6px;color:#2c6f9a;border-left:3px solid #5ca8ff;line-height:1.4}
+.rc-reply b{color:#1d5580}
+.rc-cust-response{font-size:12.5px;font-weight:700;background:#fff6ec;border-radius:12px;padding:8px 11px;margin-top:6px;color:#8a5a1e;border-left:3px solid var(--sun-deep);line-height:1.4;animation:pop .3s}
+.rc-cust-response.angry{background:#ffe8ee;color:#a8254a;border-left-color:#ff6b8a}
+.rc-actions{display:flex;gap:8px;margin-top:8px}
+
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.shop-card{background:linear-gradient(180deg,#fff,#fdf9ff);border:2px solid #f0e6ff;border-radius:20px;padding:14px;text-align:center;box-shadow:var(--sh-sm);transition:.2s;position:relative}
+.shop-card:hover{transform:translateY(-4px);box-shadow:0 8px 0 rgba(160,130,150,.1),0 14px 24px rgba(180,150,180,.2)}
+.shop-card .sc-emoji{font-size:36px;display:block;margin-bottom:6px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.1))}
+.shop-card h4{font-size:15px;margin-bottom:3px}
+.shop-card p{font-size:11.5px;color:var(--brown-soft);font-weight:600;margin-bottom:10px;min-height:30px;line-height:1.3}
+.shop-card .price{font-family:'Baloo 2';font-weight:800;color:var(--sun-deep);font-size:16px;margin-bottom:8px}
+.shop-card.owned{border-color:#bdf0d6;background:linear-gradient(180deg,#f4fff9,#e9fdf2)}
+.shop-card.owned::after{content:'✓ Đã mua';position:absolute;top:9px;right:9px;background:var(--mint-deep);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;box-shadow:0 2px 0 #3fae7e}
+
+.modal{position:fixed;inset:0;background:rgba(90,60,85,.42);backdrop-filter:blur(5px);display:none;place-items:center;z-index:100;padding:16px;overflow-y:auto}
+.modal.show{display:grid;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-card{background:linear-gradient(180deg,#fff,#fff8fc);border-radius:28px;padding:22px;max-width:440px;width:100%;box-shadow:0 20px 0 rgba(150,110,140,.18),0 30px 60px rgba(120,80,110,.35);border:3px solid #fff;text-align:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow-y:auto}
+@keyframes popIn{from{transform:scale(.7) translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.modal-card h3{font-size:21px;margin-bottom:6px;color:var(--pink-deep)}
+.modal-card p{font-size:13.5px;font-weight:600;color:var(--brown-soft);margin-bottom:14px}
+.tape-track{position:relative;height:38px;background:#f6eef8;border-radius:16px;overflow:hidden;box-shadow:inset 0 3px 8px rgba(150,110,150,.15);margin-bottom:12px;border:2px solid #fff}
+.tape-zone{position:absolute;top:0;height:100%;background:linear-gradient(180deg,#c8f7de,#7fe0b0);box-shadow:inset 0 0 0 2px #5fcf9e;border-radius:8px}
+.tape-zone::after{content:'🎯';position:absolute;inset:0;display:grid;place-items:center;font-size:17px;opacity:.75}
+.tape-marker{position:absolute;top:-3px;width:7px;height:44px;background:linear-gradient(180deg,#ff9ec7,#ff4f95);border-radius:6px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,79,149,.7)}
+.tape-rounds{font-weight:800;font-size:13px;color:var(--brown-soft);margin-bottom:14px}
+.tape-rounds b{color:var(--pink-deep);font-family:'Baloo 2';font-size:17px}
+.stars-row{display:flex;justify-content:center;gap:6px;font-size:38px;margin:10px 0 12px}
+.stars-row span{animation:starPop .45s cubic-bezier(.34,1.56,.64,1) backwards;filter:drop-shadow(0 3px 3px rgba(255,180,60,.4))}
+@keyframes starPop{from{transform:scale(0) rotate(-90deg)}to{transform:scale(1) rotate(0)}}
+.reward-box{background:linear-gradient(180deg,#fff8e8,#ffefd0);border:2px dashed var(--sun);border-radius:18px;padding:12px;margin-bottom:14px}
+.reward-box .big{font-family:'Baloo 2';font-size:26px;font-weight:800;color:var(--sun-deep)}
+.reward-box small{font-size:11px;font-weight:700;color:#c99a4a;display:block;margin-top:3px}
+.reward-box .penalty{color:#e05b90;font-size:12px;font-weight:800;display:block;margin-top:6px;background:#ffe4ef;border-radius:8px;padding:4px 8px}
+.review-msg{background:#faf6ff;border:2px solid #f0e6ff;border-radius:16px;padding:12px;margin-bottom:12px;font-size:13.5px;font-weight:600;line-height:1.45;text-align:left}
+.review-msg b{color:var(--lav-deep);display:block;font-size:11px;letter-spacing:1px;margin-bottom:4px;text-transform:uppercase}
+.reply-area{width:100%;border:2px solid #f0e6ff;border-radius:14px;padding:10px;font-size:13px;font-weight:600;background:#fff;color:var(--brown);resize:vertical;min-height:70px;font-family:'Quicksand';margin-bottom:10px}
+.reply-area:focus{outline:none;border-color:var(--pink-deep)}
+.modal-btns{display:flex;gap:8px;flex-wrap:wrap}
+.modal-btns .btn{flex:1;min-width:120px}
+.customer-reaction{background:#fff6ec;border:2px solid #ffd97d;border-radius:16px;padding:12px;margin:12px 0;font-weight:700;font-size:13.5px;color:#8a5a1e;line-height:1.4;text-align:left}
+.customer-reaction.angry{background:#ffe8ee;border-color:#ff6b8a;color:#a8254a}
+
+#toasts{position:fixed;top:16px;right:16px;z-index:200;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:#fff;border-radius:16px;padding:11px 16px;font-weight:800;font-size:13.5px;box-shadow:0 6px 0 rgba(160,130,150,.12),0 10px 24px rgba(150,110,150,.25);border-left:6px solid var(--lav-deep);max-width:290px;animation:slideIn .35s cubic-bezier(.34,1.56,.64,1);transition:.3s}
+.toast.ok{border-left-color:var(--mint-deep)}
+.toast.warn{border-left-color:var(--sun-deep)}
+.toast.err{border-left-color:#ff6b8a}
+.toast.out{opacity:0;transform:translateX(60px) scale(.85)}
+@keyframes slideIn{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:translateX(0)}}
+.particle{position:fixed;font-size:18px;pointer-events:none;z-index:300;animation:floatAway .85s ease-out forwards}
+@keyframes floatAway{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.3) rotate(180deg);opacity:0}}
+.float-text{position:fixed;font-family:'Baloo 2';font-weight:800;font-size:20px;color:var(--sun-deep);pointer-events:none;z-index:300;text-shadow:0 2px 0 #fff,0 3px 8px rgba(0,0,0,.2);animation:floatUp 1.1s ease-out forwards}
+@keyframes floatUp{0%{transform:translate(-50%,0);opacity:0}20%{opacity:1}100%{transform:translate(-50%,-75px);opacity:0}}
+.scent-cloud{position:fixed;pointer-events:none;font-size:26px;z-index:290;animation:scentRise 1.4s ease-out forwards}
+@keyframes scentRise{0%{opacity:0;transform:translate(-50%,0) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-120px) scale(1.6)}}
+
+@media(max-width:1000px){
+  .pack-layout{grid-template-columns:1fr}
+  .map-layout{grid-template-columns:1fr}
+  .shelf{max-height:220px}
+  .decor-panel{max-height:none}
+}
+@media(max-width:640px){
+  body{padding:8px}
+  .brand h1{font-size:16px}
+  .stat{padding:4px 9px;font-size:12px}
+  .tab{padding:8px 12px;font-size:12px}
+  .box{width:200px;height:170px}
+  .box.big{width:240px;height:200px}
+  .box-item{font-size:24px}
+  .box.big .box-item{font-size:28px}
+  .order-grid{grid-template-columns:1fr}
+  .map{min-height:320px}
+}
+</style>
+</head>
+<body>
+
+<div class="game">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📦</span>
+      <div>
+        <h1>Gói Hàng Cute 2.0</h1>
+        <p class="sub">Deluxe Shop Simulator</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat" title="Xu"><span>🪙</span><b id="statCoins">0</b></div>
+      <div class="stat" title="Cấp độ"><span>⭐</span><b id="statLevel">1</b></div>
+      <div class="stat" title="Đã giao"><span>📬</span><b id="statDelivered">0</b></div>
+      <div class="stat" title="Ngày"><span>📅</span><b id="statDay">1</b></div>
+    </div>
+    <div class="xpwrap">
+      <div class="xpbar"><i id="xpFill"></i></div>
+      <small id="xpText">0 / 120 XP</small>
+    </div>
+    <button class="icon-btn" id="soundBtn" title="Âm thanh">🔊</button>
+    <button class="icon-btn" id="musicBtn" title="Nhạc nền">🎵</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-view="orders">📋 Đơn hàng <span class="badge" id="badgeOrders">0</span></button>
+    <button class="tab" data-view="pack">🎁 Đóng gói</button>
+    <button class="tab" data-view="map">🛵 Giao hàng <span class="badge" id="badgeReady">0</span></button>
+    <button class="tab" data-view="reviews">💬 Đánh giá <span class="badge" id="badgeReviews">0</span></button>
+    <button class="tab" data-view="shop">🛍️ Cửa hàng</button>
+  </nav>
+
+  <main>
+    <section class="view active" id="view-orders">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>📋 Đơn hàng mới</h2>
+          <button class="btn ghost tiny" id="refreshOrders">🔄 Làm mới (15🪙)</button>
+        </div>
+        <div class="order-grid" id="orderList"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-pack">
+      <div class="pack-layout">
+        <aside class="panel shelf-panel">
+          <h3>🧺 Kệ hàng</h3>
+          <div class="shelf" id="shelf"></div>
+        </aside>
+
+        <div class="panel box-panel">
+          <div class="pack-head">
+            <div class="who" id="packOrderInfo">📭 Chưa chọn đơn hàng</div>
+            <div class="pack-progress">
+              <div class="progress"><i id="packFill"></i></div>
+              <span id="packText">0/0</span>
+            </div>
+          </div>
+
+          <div class="task-note" id="taskNote" style="display:none"></div>
+
+          <div class="box-stage">
+            <div class="box" id="box">
+              <div class="box-wrap" id="boxWrap"></div>
+              <div class="box-flaps"><i></i><i></i></div>
+              <div class="box-items" id="boxItems"></div>
+              <div class="box-stickers" id="boxStickers"></div>
+              <div class="note-card" id="boxNote"></div>
+              <div class="scent-hint" id="boxScent"></div>
+              <div class="ribbon" id="boxRibbon"><span class="bow">🎀</span></div>
+            </div>
+          </div>
+
+          <div class="pack-actions">
+            <button class="btn ghost" id="resetPack">↺ Làm lại</button>
+            <button class="btn primary" id="sealBtn" disabled>📦 Dán keo &amp; Niêm phong</button>
+          </div>
+        </div>
+
+        <aside class="panel decor-panel">
+          <h3>🎨 Trang trí</h3>
+
+          <div class="decor-section">
+            <label>🎨 Màu hộp</label>
+            <div class="swatches" id="swatches"></div>
+          </div>
+
+          <div class="decor-section">
+            <label>🎁 Giấy gói</label>
+            <div class="wraps" id="wraps"></div>
+          </div>
+
+          <div class="decor-section">
+            <label>🎀 Ruy băng</label>
+            <div class="ribbons" id="ribbons"></div>
+          </div>
+
+          <div class="decor-section">
+            <label>✨ Sticker</label>
+            <div class="stickers" id="stickers"></div>
+          </div>
+
+          <div class="decor-section">
+            <label>💐 Nước hoa <span id="perfumeHint" style="color:#b28cff;text-transform:none"></span></label>
+            <div class="perfumes" id="perfumes"></div>
+          </div>
+
+          <div class="decor-section">
+            <label>📝 Ghi chú</label>
+            <textarea class="note-input" id="noteInput" placeholder="Viết lời nhắn dễ thương cho khách... 💌" maxlength="120"></textarea>
+            <div class="note-templates" id="noteTemplates"></div>
+          </div>
+
+          <button class="btn ghost tiny" id="clearDecor" style="width:100%">🧹 Xoá hết trang trí</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-map">
+      <div class="map-layout">
+        <div class="panel map-panel">
+          <div class="map" id="map"></div>
+        </div>
+        <aside class="panel deliver-panel">
+          <h3>🛵 Giao hàng</h3>
+          <div id="deliverList"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-reviews">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>💬 Đánh giá từ khách</h2>
+          <span class="muted" style="padding:0;font-size:12px">Trả lời khéo léo để nhận thưởng nhé!</span>
+        </div>
+        <div class="review-list" id="reviewList"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-shop">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>🛍️ Nâng cấp cửa hàng</h2>
+          <span class="muted" style="padding:0">Ví: <b id="shopCoins">0</b> 🪙</span>
+        </div>
+        <div class="shop-grid" id="shopList"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="tapeModal">
+  <div class="modal-card">
+    <h3>🎀 Dán băng keo!</h3>
+    <p>Nhấn <b>DỪNG</b> (hoặc Space) khi thanh trượt nằm trong vùng xanh nhé!</p>
+    <div class="tape-track">
+      <div class="tape-zone" id="tapeZone"></div>
+      <div class="tape-marker" id="tapeMarker"></div>
+    </div>
+    <div class="tape-rounds">Lượt <b id="tapeRound">1</b> / 3 &nbsp;·&nbsp; Chuẩn: <b id="tapeGood">0</b></div>
+    <button class="btn primary" id="tapeBtn" style="width:100%">DỪNG!</button>
+  </div>
+</div>
+
+<div class="modal" id="rateModal">
+  <div class="modal-card">
+    <h3 id="rateTitle">🎉 Giao thành công!</h3>
+    <p id="rateSub">Khách hàng rất hài lòng</p>
+    <div class="stars-row" id="rateStars"></div>
+    <div class="reward-box">
+      <div class="big" id="rateCoins">+0 🪙</div>
+      <small id="rateXp">+0 XP</small>
+      <span class="penalty" id="ratePenalty" style="display:none"></span>
+    </div>
+    <button class="btn primary" id="rateGoReview" style="width:100%;margin-bottom:8px">💬 Xem đánh giá</button>
+    <button class="btn ghost" id="rateClose" style="width:100%">Đóng</button>
+  </div>
+</div>
+
+<div class="modal" id="reviewModal">
+  <div class="modal-card">
+    <h3>💬 Đánh giá từ khách</h3>
+    <p id="revSub">Phản hồi lại cho khách nhé!</p>
+    <div id="revAvaBox" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px"></div>
+    <div class="review-msg" id="revMsg"></div>
+    <textarea class="reply-area" id="replyInput" placeholder="Viết trả lời dễ thương cho khách... 💌"></textarea>
+    <div class="note-templates" id="replyTemplates" style="justify-content:center;margin-bottom:10px"></div>
+    <div class="modal-btns">
+      <button class="btn ghost" id="revSkip">Bỏ qua</button>
+      <button class="btn primary" id="revSend">💌 Gửi trả lời</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="reactModal">
+  <div class="modal-card">
+    <h3 id="reactTitle">Khách đã trả lời!</h3>
+    <div id="reactAva" style="font-size:56px;margin:6px 0"></div>
+    <div class="customer-reaction" id="reactText"></div>
+    <div class="reward-box" id="reactReward" style="display:none">
+      <div class="big" id="reactCoins">+0 🪙</div>
+      <small id="reactXp">+0 XP</small>
+    </div>
+    <button class="btn mint" id="reactClose" style="width:100%">Đã hiểu 💗</button>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script>
+/* =====================================================================
+   📦 GÓI HÀNG CUTE 2.0 — DELUXE (Big Update)
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const randInt = (a,b) => Math.floor(Math.random()*(b-a+1))+a;
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+const uid = () => Math.random().toString(36).slice(2,9);
+
+/* ---------- ITEMS: 155 món ---------- */
+const ITEMS = [
+  // Thú bông
+  {id:'teddy',   name:'Gấu bông',  emoji:'🧸'},
+  {id:'bear',    name:'Gấu nâu',   emoji:'🐻'},
+  {id:'rabbit',  name:'Thỏ bông',  emoji:'🐰'},
+  {id:'cat',     name:'Mèo con',   emoji:'🐱'},
+  {id:'panda',   name:'Gấu trúc',  emoji:'🐼'},
+  {id:'unicorn', name:'Kỳ lân',    emoji:'🦄'},
+  // Bánh kẹo
+  {id:'cake',    name:'Bánh kem',  emoji:'🍰'},
+  {id:'cupcake', name:'Cupcake',   emoji:'🧁'},
+  {id:'candy',   name:'Kẹo',       emoji:'🍬'},
+  {id:'lolli',   name:'Kẹo mút',   emoji:'🍭'},
+  {id:'choc',    name:'Socola',    emoji:'🍫'},
+  {id:'cookie',  name:'Bánh quy',  emoji:'🍪'},
+  {id:'donut',   name:'Donut',     emoji:'🍩'},
+  {id:'icecream',name:'Kem',       emoji:'🍦'},
+  {id:'pie',     name:'Bánh pie',  emoji:'🥧'},
+  {id:'macaron', name:'Macaron',   emoji:'🍮'},
+  {id:'pizza',   name:'Pizza',     emoji:'🍕'},
+  {id:'burger',  name:'Burger',    emoji:'🍔'},
+  {id:'crois',   name:'Croissant', emoji:'🥐'},
+  {id:'apple',   name:'Táo đỏ',    emoji:'🍎'},
+  {id:'strawb',  name:'Dâu tây',   emoji:'🍓'},
+  {id:'boba',    name:'Trà sữa',   emoji:'🧋'},
+  {id:'ring',    name:'Nhẫn',      emoji:'💍'},
+  {id:'necklace',name:'Dây chuyền',emoji:'📿'},
+  {id:'gem',     name:'Đá quý',    emoji:'💎'},
+  {id:'crown',   name:'Vương miện',emoji:'👑'},
+  {id:'phone',   name:'Điện thoại',emoji:'📱'},
+  {id:'laptop',  name:'Laptop',    emoji:'💻'},
+  {id:'headphone',name:'Tai nghe', emoji:'🎧'},
+  {id:'watch',   name:'Đồng hồ',   emoji:'⌚'},
+  {id:'camera',  name:'Máy ảnh',   emoji:'📷'},
+  {id:'game',    name:'Game',      emoji:'🎮'},
+  {id:'console', name:'Máy chơi',  emoji:'🕹️'},
+  {id:'shoe',    name:'Giày',      emoji:'👟'},
+  {id:'shirt',   name:'Áo',        emoji:'👕'},
+  {id:'dress',   name:'Váy',       emoji:'👗'},
+  {id:'hat',     name:'Mũ',        emoji:'👒'},
+  {id:'scarf',   name:'Khăn',      emoji:'🧣'},
+  {id:'bag',     name:'Túi xách',  emoji:'👜'},
+  {id:'flower',  name:'Hoa',       emoji:'💐'},
+  {id:'rose',    name:'Hoa hồng',  emoji:'🌹'},
+  {id:'sun',     name:'Hướng dương',emoji:'🌻'},
+  {id:'plant',   name:'Cây',       emoji:'🪴'},
+  {id:'cactus',  name:'Xương rồng',emoji:'🌵'},
+  {id:'book',    name:'Sách',      emoji:'📚'},
+  {id:'pencil',  name:'Bút',       emoji:'✏️'},
+  {id:'art',     name:'Đồ vẽ',     emoji:'🎨'},
+  {id:'perfume', name:'Nước hoa',  emoji:'🧴'},
+  {id:'balloon', name:'Bóng bay',  emoji:'🎈'},
+  {id:'gift',    name:'Quà',       emoji:'🎁'},
+  {id:'wand',    name:'Đũa phép',  emoji:'🪄'},
+  {id:'orb',     name:'Quả cầu',   emoji:'🔮'},
+  {id:'music',   name:'Nhạc cụ',   emoji:'🎸'},
+  {id:'piano',   name:'Piano',     emoji:'🎹'},
+  // Đồ ăn & uống
+  {id:'ramen',   name:'Mì ramen',  emoji:'🍜'},
+  {id:'sushi',   name:'Sushi',     emoji:'🍣'},
+  {id:'taco',    name:'Taco',      emoji:'🌮'},
+  {id:'burrito', name:'Burrito',   emoji:'🌯'},
+  {id:'fries',   name:'Khoai tây', emoji:'🍟'},
+  {id:'popcorn', name:'Bỏng ngô',  emoji:'🍿'},
+  {id:'pretzel', name:'Pretzel',   emoji:'🥨'},
+  {id:'bagel',   name:'Bagel',     emoji:'🥯'},
+  {id:'waffle',  name:'Waffle',    emoji:'🧇'},
+  {id:'pancake', name:'Pancake',   emoji:'🥞'},
+  {id:'cheese',  name:'Phô mai',   emoji:'🧀'},
+  {id:'bacon',   name:'Thịt xông khói',emoji:'🥓'},
+  {id:'egg',     name:'Trứng',     emoji:'🥚'},
+  {id:'bread',   name:'Bánh mì',   emoji:'🍞'},
+  {id:'rice',    name:'Cơm',       emoji:'🍚'},
+  {id:'curry',   name:'Cà ri',     emoji:'🍛'},
+  {id:'dumpling',name:'Bánh bao',  emoji:'🥟'},
+  {id:'shrimp',  name:'Tôm',       emoji:'🍤'},
+  {id:'crab',    name:'Cua',       emoji:'🦀'},
+  {id:'squid',   name:'Mực',       emoji:'🦑'},
+  {id:'octopus', name:'Bạch tuộc', emoji:'🐙'},
+  {id:'fish',    name:'Cá',        emoji:'🐟'},
+  {id:'tropical',name:'Cá nhiệt đới',emoji:'🐠'},
+  {id:'whale',   name:'Cá voi',    emoji:'🐳'},
+  {id:'dolphin', name:'Cá heo',    emoji:'🐬'},
+  // Trái cây & rau
+  {id:'banana',  name:'Chuối',     emoji:'🍌'},
+  {id:'grapes',  name:'Nho',       emoji:'🍇'},
+  {id:'watermelon',name:'Dưa hấu', emoji:'🍉'},
+  {id:'melon',   name:'Dưa lưới',  emoji:'🍈'},
+  {id:'orange',  name:'Cam',       emoji:'🍊'},
+  {id:'lemonFruit',name:'Chanh vàng',emoji:'🍋'},
+  {id:'peach',   name:'Đào',       emoji:'🍑'},
+  {id:'cherry',  name:'Anh đào',   emoji:'🍒'},
+  {id:'mango',   name:'Xoài',      emoji:'🥭'},
+  {id:'pineapple',name:'Dứa',      emoji:'🍍'},
+  {id:'coconut', name:'Dừa',       emoji:'🥥'},
+  {id:'kiwi',    name:'Kiwi',      emoji:'🥝'},
+  {id:'tomato',  name:'Cà chua',   emoji:'🍅'},
+  {id:'avocado', name:'Bơ',        emoji:'🥑'},
+  {id:'eggplant',name:'Cà tím',    emoji:'🍆'},
+  {id:'potato',  name:'Khoai tây', emoji:'🥔'},
+  {id:'carrot',  name:'Cà rốt',    emoji:'🥕'},
+  {id:'corn',    name:'Ngô',       emoji:'🌽'},
+  {id:'pepper',  name:'Ớt',        emoji:'🌶️'},
+  {id:'cucumber',name:'Dưa chuột', emoji:'🥒'},
+  {id:'broccoli',name:'Súp lơ',    emoji:'🥦'},
+  {id:'mushroom',name:'Nấm',       emoji:'🍄'},
+  {id:'chestnut',name:'Hạt dẻ',    emoji:'🌰'},
+  {id:'peanut',  name:'Đậu phộng', emoji:'🥜'},
+  {id:'honey',   name:'Mật ong',   emoji:'🍯'},
+  {id:'jam',     name:'Mứt',       emoji:'🫙'},
+  // Đồ vật
+  {id:'key',     name:'Chìa khoá', emoji:'🔑'},
+  {id:'lock',    name:'Ổ khoá',    emoji:'🔒'},
+  {id:'bell',    name:'Chuông',    emoji:'🔔'},
+  {id:'lantern', name:'Đèn lồng',  emoji:'🏮'},
+  {id:'candle',  name:'Nến',       emoji:'🕯️'},
+  {id:'lamp',    name:'Đèn',       emoji:'💡'},
+  {id:'flashlight',name:'Đèn pin', emoji:'🔦'},
+  {id:'magGlass',name:'Kính lúp',  emoji:'🔍'},
+  {id:'telescope',name:'Kính viễn vọng',emoji:'🔭'},
+  {id:'microscope',name:'Kính hiển vi',emoji:'🔬'},
+  {id:'hourglass',name:'Đồng hồ cát',emoji:'⏳'},
+  {id:'alarm',   name:'Đồng hồ báo',emoji:'⏰'},
+  {id:'calendar',name:'Lịch',      emoji:'📅'},
+  {id:'map',     name:'Bản đồ',    emoji:'🗺️'},
+  {id:'compass', name:'La bàn',    emoji:'🧭'},
+  {id:'backpack',name:'Ba lô',     emoji:'🎒'},
+  {id:'umbrella',name:'Ô',         emoji:'☂️'},
+  {id:'glasses', name:'Kính',      emoji:'👓'},
+  {id:'sunglasses',name:'Kính râm',emoji:'🕶️'},
+  {id:'ring2',   name:'Nhẫn KC',   emoji:'💍'},
+  {id:'crown2',  name:'Vương miện vàng',emoji:'👑'},
+  {id:'medal',   name:'Huy chương',emoji:'🎖️'},
+  {id:'trophy',  name:'Cúp',       emoji:'🏆'},
+  // Sinh vật
+  {id:'butterfly',name:'Bướm',     emoji:'🦋'},
+  {id:'bee',     name:'Ong',       emoji:'🐝'},
+  {id:'ladybug', name:'Bọ rùa',    emoji:'🐞'},
+  {id:'snail',   name:'Ốc sên',    emoji:'🐌'},
+  {id:'turtle',  name:'Rùa',       emoji:'🐢'},
+  {id:'snake',   name:'Rắn',       emoji:'🐍'},
+  {id:'dragon',  name:'Rồng',      emoji:'🐉'},
+  {id:'dino',    name:'Khủng long',emoji:'🦕'},
+  {id:'trex',    name:'T-rex',     emoji:'🦖'},
+  {id:'shark',   name:'Cá mập',    emoji:'🦈'},
+  {id:'unicorn2',name:'Kỳ lân 2',  emoji:'🦄'},
+  {id:'phoenix', name:'Phượng hoàng',emoji:'🦅'},
+  // Trừu tượng
+  {id:'heart',   name:'Trái tim',  emoji:'❤️'},
+  {id:'star',    name:'Ngôi sao',  emoji:'⭐'},
+  {id:'moon',    name:'Mặt trăng', emoji:'🌙'},
+  {id:'sun2',    name:'Mặt trời',  emoji:'☀️'},
+  {id:'cloud',   name:'Đám mây',   emoji:'☁️'},
+  {id:'rainbow', name:'Cầu vồng',  emoji:'🌈'},
+  {id:'snowflake',name:'Bông tuyết',emoji:'❄️'},
+  {id:'fire',    name:'Lửa',       emoji:'🔥'},
+  {id:'sparkles',name:'Lấp lánh',  emoji:'✨'},
+  {id:'clover',  name:'Cỏ 4 lá',   emoji:'🍀'},
+  {id:'moon2',   name:'Trăng liềm',emoji:'🌛'},
+  {id:'globe',   name:'Địa cầu',   emoji:'🌍'},
+  {id:'comet',   name:'Sao băng',  emoji:'☄️'},
+  {id:'crystal', name:'Pha lê',    emoji:'🔮'},
+];
+
+/* ---------- CUSTOMERS: 32 khách ---------- */
+const CUSTOMERS = [
+  {name:'Bé Na',     emoji:'🐱', personality:'vui vẻ'},
+  {name:'Chị Mai',   emoji:'🐰', personality:'dễ tính'},
+  {name:'Anh Khoa',  emoji:'🐻', personality:'hài hước'},
+  {name:'Cô Lan',    emoji:'🦊', personality:'khó tính'},
+  {name:'Bé Tí',     emoji:'🐼', personality:'trẻ con'},
+  {name:'Chị Hoa',   emoji:'🐨', personality:'dịu dàng'},
+  {name:'Anh Dũng',  emoji:'🐯', personality:'nghiêm khắc'},
+  {name:'Bé Bống',   emoji:'🐸', personality:'vui vẻ'},
+  {name:'Chú Tám',   emoji:'🐵', personality:'hài hước'},
+  {name:'Chị Thảo',  emoji:'🦄', personality:'sang chảnh'},
+  {name:'Bé Miu',    emoji:'🐧', personality:'đáng yêu'},
+  {name:'Anh Nam',   emoji:'🐺', personality:'lạnh lùng'},
+  {name:'Bé Sóc',    emoji:'🐿️', personality:'năng động'},
+  {name:'Cô Bưởi',   emoji:'🐮', personality:'chậm rãi'},
+  {name:'Chị Vy',    emoji:'🦋', personality:'cầu toàn'},
+  {name:'Anh Bảo',   emoji:'🐲', personality:'ngầu'},
+  {name:'Bé Gạo',    emoji:'🐣', personality:'hồn nhiên'},
+  {name:'Chị Nhung', emoji:'🦢', personality:'dịu dàng'},
+  {name:'Bà Tư',     emoji:'🐢', personality:'kỹ tính'},
+  {name:'Bé Bắp',    emoji:'🌽', personality:'vui vẻ'},
+  {name:'Anh Huy',   emoji:'🦁', personality:'tốt bụng'},
+  {name:'Chị Linh',  emoji:'🦉', personality:'thông thái'},
+  {name:'Bé Khoai',  emoji:'🐹', personality:'nhút nhát'},
+  {name:'Chị Quỳnh', emoji:'🦜', personality:'nói nhiều'},
+  {name:'Anh Sơn',   emoji:'🐗', personality:'cộc cằn'},
+  {name:'Bé Xoài',   emoji:'🦝', personality:'tinh nghịch'},
+  {name:'Chú Bảy',   emoji:'🐊', personality:'điềm tĩnh'},
+  {name:'Chị Trúc',  emoji:'🦩', personality:'điệu đà'},
+  {name:'Anh Hùng',  emoji:'🦏', personality:'mạnh mẽ'},
+  {name:'Bé Tép',    emoji:'🦐', personality:'lí lắc'},
+  {name:'Cô Hạnh',   emoji:'🐘', personality:'phúc hậu'},
+  {name:'Chị Yến',   emoji:'🕊️', personality:'nhẹ nhàng'},
+];
+
+const HOUSES = [
+  {name:'Nhà Bé Na',    x:22, y:12, emoji:'🏠'},
+  {name:'Nhà Chị Mai',  x:50, y:22, emoji:'🏡'},
+  {name:'Nhà Anh Khoa', x:78, y:13, emoji:'🏘️'},
+  {name:'Nhà Cô Lan',   x:22, y:62, emoji:'🏠'},
+  {name:'Nhà Bé Tí',    x:50, y:68, emoji:'🏡'},
+  {name:'Nhà Chị Hoa',  x:78, y:58, emoji:'🏘️'},
+];
+
+/* ---------- 20 màu hộp ---------- */
+const BOX_COLORS = [
+  '#f9dcbb', '#ffd4e5', '#d6f0ff', '#d9f7d0', '#e6daff', '#ffe9b8',
+  '#ffd8c2', '#c8f2ec', '#f5d9ff', '#e8e2d6', '#ffc9d9', '#b8e0ff',
+  '#ffe0c2', '#d4e8ff', '#c9ffdd', '#ffd9e8', '#f0d9ff', '#fff2b8',
+  '#e0f0e0', '#f5e0d0',
+];
+
+/* ---------- WRAPPING PAPERS ---------- */
+const WRAPS = [
+  {id:null,      name:'Không',  css:''},
+  {id:'dots',    name:'Chấm',   css:`radial-gradient(circle, #ffffff88 3px, transparent 3.5px) 0 0/22px 22px`},
+  {id:'stripes', name:'Sọc',    css:`repeating-linear-gradient(45deg, #ffffff66 0 8px, transparent 8px 16px)`},
+  {id:'hearts',  name:'Tim',    css:`radial-gradient(circle at 30% 30%, #ff7fb088 2px, transparent 3px), radial-gradient(circle at 70% 70%, #ff7fb088 2px, transparent 3px) 0 0/24px 24px`},
+  {id:'stars',   name:'Sao',    css:`radial-gradient(circle, #ffd97dcc 2px, transparent 3px) 0 0/20px 20px`},
+  {id:'plaid',   name:'Carô',   css:`repeating-linear-gradient(0deg, #ffffff55 0 2px, transparent 2px 14px), repeating-linear-gradient(90deg, #ffffff55 0 2px, transparent 2px 14px)`},
+  {id:'clouds',  name:'Mây',    css:`radial-gradient(ellipse 18px 8px at 50% 60%, #ffffffaa, transparent 70%) 0 0/40px 30px`},
+  {id:'leaves',  name:'Lá',     css:`radial-gradient(ellipse 6px 10px at 50% 50%, #b8e0a0aa, transparent 70%) 0 0/28px 28px`},
+  {id:'waves',   name:'Sóng',   css:`repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff55 4px, transparent 8px)`},
+];
+
+/* ---------- RIBBONS ---------- */
+const RIBBONS = [
+  {id:null,   color:'transparent', emoji:'🚫', label:'Không'},
+  {id:'red',  color:'#ff5c8a', emoji:'🎀', label:'Hồng'},
+  {id:'blue', color:'#5ca8ff', emoji:'💙', label:'Xanh'},
+  {id:'gold', color:'#ffc94d', emoji:'💛', label:'Vàng'},
+  {id:'mint', color:'#5fcf9e', emoji:'💚', label:'Mint'},
+  {id:'purple',color:'#b28cff',emoji:'💜', label:'Tím'},
+  {id:'red2', color:'#e63946', emoji:'❤️', label:'Đỏ'},
+  {id:'black',color:'#2b2b2b', emoji:'🖤', label:'Đen'},
+  {id:'teal', color:'#4dd0c9', emoji:'🩵', label:'Ngọc'},
+  {id:'orange',color:'#ffa94d',emoji:'🧡', label:'Cam'},
+];
+
+/* ---------- STICKERS ---------- */
+const STICKERS_BASE = [
+  '⭐','❤️','🌸','🌈','🍀','✨','🐱','🎀','🍓','☁️','🌟','🐰',
+  '🍭','🍰','🎂','🎉','🎊','🎁','💝','💖','💕','💗','💓','🥰',
+  '😍','🤗','🥳','😊','😇','🦋','🌺','🌷','🌼','🌻','🌹','🍬',
+  '🐶','🐷','🐮','🐸','🐵','🐔','🐤','🦆','🦉','🐝','🐞','🐌',
+  '🌙','☀️','⛅','❄️','🔥','💧','🌊','🍁','🌴','🌵','🌾','🍄',
+];
+const STICKERS_VIP = [
+  '👑','💎','🦄','🔥','🍫','🪄','💐','🎈','🌟','💫','🐉','🌈','🍒','🥇','🏆','💯',
+  '🦕','🦖','🦈','🐳','🐬','🦭','🦦','🦥','🦨','🦔','🦇','🦜','🦚','🦩','🦢','🕊️',
+  '🔮','🌠','🌌','🪐','🌞','🌝','🌚','⚡','💥','🌟',
+];
+
+/* ---------- 10 loại nước hoa ---------- */
+const PERFUMES = [
+  {id:null,      name:'Không',     emoji:'🚫'},
+  {id:'rose',    name:'Hoa hồng',  emoji:'🌹', cloud:'🌸'},
+  {id:'jasmine', name:'Hoa nhài',  emoji:'🌼', cloud:'🌼'},
+  {id:'lemon',   name:'Chanh',     emoji:'🍋', cloud:'🍋'},
+  {id:'berry',   name:'Dâu',       emoji:'🍓', cloud:'🍓'},
+  {id:'choco',   name:'Socola',    emoji:'🍫', cloud:'🍫'},
+  {id:'mint',    name:'Bạc hà',    emoji:'🌿', cloud:'🌿'},
+  {id:'vanilla', name:'Vanilla',   emoji:'🍦', cloud:'🍦'},
+  {id:'cherry',  name:'Anh đào',   emoji:'🍒', cloud:'🍒'},
+  {id:'lavender',name:'Oải hương', emoji:'💜', cloud:'💜'},
+  {id:'coconut', name:'Dừa',       emoji:'🥥', cloud:'🥥'},
+];
+
+/* ---------- NOTE TEMPLATES ---------- */
+const NOTE_TEMPLATES = [
+  'Cảm ơn bạn đã ủng hộ shop 💖',
+  'Chúc bạn một ngày thật tốt lành ✨',
+  'Hàng xinh gửi bạn nè, nhớ mở nhẹ nhé 🎀',
+  'Mong bạn thích món này! 🥰',
+  'Yêu thương gửi bạn 💕',
+  'Cảm ơn bạn đã tin tưởng shop 🌸',
+  'Gửi bạn ngàn lời cảm ơn 🌷',
+  'Chúc bạn luôn vui vẻ nha! 🌟',
+];
+
+/* ---------- REVIEW TEXTS ---------- */
+const REVIEW_TEXTS = {
+  5:[
+    'Wao gói hàng xinh quá trời ơi! Shop đóng gói siêu kỹ, mình mê luôn 🥰',
+    'Giao nhanh, hàng đẹp, đóng gói quá tươm tất. 10 điểm không nhưng!',
+    'Mở hộp ra là thấy thương liền. Cảm ơn shop nhiều nha 💖',
+    'Sản phẩm đúng như mô tả, đóng gói cute hết nấc. Sẽ ủng hộ dài dài!',
+    'Trời ơi siêu cấp dễ thương! Đóng gói quá xịn, mình sẽ giới thiệu bạn bè 🌟',
+    'Đẹp xuất sắc! Nhận hàng mà lòng vui phơi phới. Cảm ơn shop! 💐',
+    'Gói hàng y như quà tặng vậy đó. Quá đỉnh luôn shop ơi! 🎀',
+  ],
+  4:[
+    'Hàng xinh, đóng gói ổn. Giao hơi lâu chút nhưng vẫn ok nè 😊',
+    'Mọi thứ ổn áp, gói hàng đẹp. Chỉ tiếc chưa có sticker gì nhiều.',
+    'Hàng đẹp shop ơi! Lần sau thêm note là đỉnh luôn nha 💕',
+    'Đóng gói ổn, hàng xinh. Trừ 1 sao vì giao hơi chậm xíu.',
+    'Ổn nha shop, mình khá hài lòng. Lần sau thêm ruy băng nhé! 🎀',
+  ],
+  3:[
+    'Hàng ổn nhưng đóng gói hơi sơ sài xíu. Cần chăm chút hơn nha.',
+    'Bình thường, giao hơi trễ. Nói chung là tạm ổn thôi.',
+    'Hàng đúng nhưng mở ra không có gì đặc biệt lắm 😅',
+    'Đóng gói tàm tạm, hàng không sao nhưng cần xinh hơn.',
+  ],
+  2:[
+    'Hơi thất vọng nha, hàng giao lộn món, đóng gói cũng ẩu.',
+    'Shipper giao chậm, hàng bị móp nhẹ. Mong shop khắc phục!',
+    'Đóng gói chưa kỹ, băng keo dán lệch. Không hài lòng lắm 😕',
+    'Hộp không xinh như mong đợi, hàng thì tạm. Hơi buồn.',
+  ],
+  1:[
+    'Quá tệ! Hàng lộn tùm lum, giao thì trễ. Không bao giờ mua lại!',
+    'Shop làm ăn kiểu gì vậy?? Đóng gói ẩu, hàng bị hư luôn 😡',
+    'Thất vọng vô cùng, yêu cầu shop xem lại cách làm việc!!!',
+    'Hàng lộn, thiếu món, lại còn bị dị ứng nước hoa nữa! Báo cáo shop 😤',
+  ],
+};
+
+/* ---------- SHOP ---------- */
+const SHOP_ITEMS = [
+  {id:'shoes',   name:'Giày êm',         emoji:'👟', desc:'Shipper đi nhanh hơn 35%',        price:160},
+  {id:'scooter', name:'Xe máy',          emoji:'🛵', desc:'Shipper đi nhanh hơn 80%',        price:420},
+  {id:'gloves',  name:'Găng tay',        emoji:'🧤', desc:'Bớt lỗi khi bỏ nhầm món',         price:220},
+  {id:'vip',     name:'Thẻ VIP',         emoji:'💳', desc:'+25% tiền thưởng mỗi đơn',        price:380},
+  {id:'robot',   name:'Robot dán keo',   emoji:'🤖', desc:'Băng keo luôn hoàn hảo',          price:520},
+  {id:'bigbox',  name:'Hộp đại',         emoji:'📦', desc:'Đơn hàng có nhiều món hơn',       price:300},
+  {id:'stickerpack',name:'Bộ sticker xịn',emoji:'✨',desc:'Mở khoá sticker hiếm',            price:260},
+  {id:'ad',      name:'Quảng cáo',       emoji:'📣', desc:'Nhiều đơn hàng hơn mỗi lần',      price:200},
+  {id:'perfumeUp',name:'Bộ nước hoa',    emoji:'🌸', desc:'Khách sẽ yêu cầu nước hoa cụ thể', price:280},
+  {id:'premiumPaper',name:'Giấy gói xịn',emoji:'🎀', desc:'Thêm giấy gói đẹp',              price:240},
+];
+
+/* ---------- STATE ---------- */
+let S = {
+  coins: 200,
+  xp: 0,
+  level: 1,
+  day: 1,
+  sound: true,
+  music: false,
+  orders: [],
+  pack: null,
+  ready: [],
+  delivering: null,
+  deliveredCount: 0,
+  upgrades: {},
+  reviews: [],
+  currentReviewId: null,
+  view: 'orders',
+};
+let orderSeq = 100;
+let animId = null;
+
+/* ---------- AUDIO ---------- */
+let audioCtx = null;
+function getCtx(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+function beep(freq=600, dur=0.08, type='sine', vol=0.05){
+  if(!S.sound) return;
+  try{
+    const ctx = getCtx();
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(vol, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime + dur);
+  }catch(e){}
+}
+function chord(freqs, gap=70){ freqs.forEach((f,i)=> setTimeout(()=>beep(f, 0.12, 'sine', 0.06), i*gap)); }
+function spraySound(){
+  if(!S.sound) return;
+  try{
+    const ctx = getCtx();
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type='sawtooth'; o.frequency.setValueAtTime(2000, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(600, ctx.currentTime+0.25);
+    g.gain.setValueAtTime(0.04, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.3);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime+0.3);
+  }catch(e){}
+}
+
+/* ---------- ANIME BACKGROUND MUSIC ---------- */
+let musicTimer = null;
+let musicStep = 0;
+const MUSIC_MELODY = [0, 2, 4, 7, 9, 7, 4, 2, 0, 4, 7, 9, 12, 9, 7, 4];
+const MUSIC_BASS = [0, 0, 5, 5, 7, 7, 5, 5];
+function noteFreq(semi){ return 261.63 * Math.pow(2, semi / 12); }
+function playMusicTick(){
+  if(!S.music) return;
+  try{
+    const ctx = getCtx();
+    const now = ctx.currentTime;
+    const step = musicStep % 16;
+    const freq = noteFreq(MUSIC_MELODY[step]);
+
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(0.035, now + 0.06);
+    g.gain.exponentialRampToValueAtTime(0.0008, now + 1.4);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(now); o.stop(now + 1.5);
+
+    const o2 = ctx.createOscillator(), g2 = ctx.createGain();
+    o2.type = 'triangle'; o2.frequency.value = freq * 2;
+    g2.gain.setValueAtTime(0, now);
+    g2.gain.linearRampToValueAtTime(0.010, now + 0.06);
+    g2.gain.exponentialRampToValueAtTime(0.0006, now + 1.0);
+    o2.connect(g2); g2.connect(ctx.destination);
+    o2.start(now); o2.stop(now + 1.1);
+
+    if(step % 2 === 0){
+      const bIdx = Math.floor(step / 2) % MUSIC_BASS.length;
+      const bFreq = noteFreq(MUSIC_BASS[bIdx] - 24);
+      const o3 = ctx.createOscillator(), g3 = ctx.createGain();
+      o3.type = 'sine'; o3.frequency.value = bFreq;
+      g3.gain.setValueAtTime(0, now);
+      g3.gain.linearRampToValueAtTime(0.045, now + 0.08);
+      g3.gain.exponentialRampToValueAtTime(0.0008, now + 1.2);
+      o3.connect(g3); g3.connect(ctx.destination);
+      o3.start(now); o3.stop(now + 1.3);
+    }
+    musicStep++;
+  }catch(e){}
+  musicTimer = setTimeout(playMusicTick, 420);
+}
+function startMusic(){ if(musicTimer || S.music===false) return; S.music = true; playMusicTick(); }
+function stopMusic(){ S.music = false; clearTimeout(musicTimer); musicTimer = null; }
+
+/* ---------- TOAST ---------- */
+function toast(msg, type='info'){
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  $('#toasts').appendChild(t);
+  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(), 320); }, 2400);
+}
+
+/* ---------- PARTICLES ---------- */
+function burst(x, y, emojis=['✨','⭐','💖'], count=7){
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = pick(emojis);
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    p.style.setProperty('--dx', (Math.random()*140-70) + 'px');
+    p.style.setProperty('--dy', (-50 - Math.random()*90) + 'px');
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 900);
+  }
+}
+function shake(el){ el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'), 450); }
+function scentCloud(x, y, emoji){
+  const el = document.createElement('div');
+  el.className = 'scent-cloud';
+  el.textContent = emoji;
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 1450);
+}
+
+/* ---------- HUD ---------- */
+function xpNeeded(){ return 80 + S.level * 45; }
+function updateHUD(){
+  $('#statCoins').textContent = S.coins;
+  $('#statLevel').textContent = S.level;
+  $('#statDelivered').textContent = S.deliveredCount;
+  $('#statDay').textContent = S.day;
+  const need = xpNeeded();
+  $('#xpFill').style.width = clamp(S.xp / need * 100, 0, 100) + '%';
+  $('#xpText').textContent = `${S.xp} / ${need} XP`;
+  $('#shopCoins').textContent = S.coins;
+  ['badgeOrders','badgeReady','badgeReviews'].forEach(id => {
+    const el = $('#'+id);
+    if(!el) return;
+    if(id==='badgeOrders'){ el.textContent = S.orders.length; el.dataset.zero = S.orders.length?'0':'1'; }
+    if(id==='badgeReady'){ el.textContent = S.ready.length; el.dataset.zero = S.ready.length?'0':'1'; }
+    if(id==='badgeReviews'){ const n = S.reviews.filter(r=>!r.replied).length; el.textContent = n; el.dataset.zero = n?'0':'1'; }
+  });
+}
+function addXp(n){
+  S.xp += n;
+  let need = xpNeeded();
+  while(S.xp >= need){
+    S.xp -= need;
+    S.level++;
+    need = xpNeeded();
+    chord([880, 1100, 1320, 1600]);
+    toast(`🎉 Lên cấp ${S.level}!`, 'ok');
+    burst(window.innerWidth/2, 120, ['🎉','⭐','💖','✨'], 14);
+  }
+  updateHUD();
+}
+
+/* =====================================================================
+   ORDERS
+   ===================================================================== */
+function makeOrder(){
+  const maxExtra = S.upgrades.bigbox ? 2 : 0;
+  const maxItems = 3 + Math.min(3, Math.floor(S.level/2)) + maxExtra;
+  const minItems = 2;
+  const n = randInt(minItems, Math.min(maxItems, 7));
+  const poolSize = Math.min(ITEMS.length, 20 + S.level * 5 + (S.upgrades.ad ? 10 : 0));
+  const pool = ITEMS.slice(0, poolSize);
+  const chosen = shuffle(pool).slice(0, n);
+  const c = pick(CUSTOMERS);
+  const house = pick(HOUSES);
+  const reward = Math.round(50 + n*18 + S.level*7 + randInt(0, 30));
+  let desiredPerfume = null;
+  if(S.upgrades.perfumeUp && Math.random() < 0.65){
+    const real = PERFUMES.filter(p => p.id);
+    desiredPerfume = pick(real).id;
+  }
+  return {
+    id: 'OD' + (++orderSeq),
+    customer: c,
+    items: chosen.map(i=>i.id),
+    itemObjs: chosen,
+    reward,
+    house,
+    desiredPerfume,
+  };
+}
+
+function ensureOrders(){ while(S.orders.length < 4) S.orders.push(makeOrder()); }
+
+function renderOrders(){
+  ensureOrders();
+  const el = $('#orderList');
+  el.innerHTML = '';
+  S.orders.forEach((o, idx) => {
+    const card = document.createElement('div');
+    card.className = 'order-card' + (o.items.length >= 4 ? ' big-order' : '');
+    card.style.animationDelay = (idx*0.06) + 's';
+    const packing = S.pack && S.pack.order.id === o.id;
+    const pf = o.desiredPerfume ? PERFUMES.find(p=>p.id===o.desiredPerfume) : null;
+    card.innerHTML = `
+      <div class="oc-head">
+        <div class="ava">${o.customer.emoji}</div>
+        <div>
+          <b>${o.customer.name}<span class="tag-person">${o.customer.personality}</span></b>
+          <small>${o.house.name}</small>
+        </div>
+      </div>
+      <div class="oc-items">
+        ${o.itemObjs.map(i=>`<span class="chip"><span class="e">${i.emoji}</span>${i.name}</span>`).join('')}
+      </div>
+      ${pf ? `<div class="perfume-ask"><span class="icon">${pf.emoji}</span> Khách muốn mùi: <b>${pf.name}</b></div>` : ''}
+      <div class="oc-foot">
+        <div>
+          <div class="reward">+${o.reward} 🪙</div>
+          <div class="dist">${o.items.length} món · ${Math.round(30 + o.items.length*9)}m</div>
+        </div>
+      </div>
+    `;
+    const btn = document.createElement('button');
+    btn.className = 'btn ' + (packing ? 'ghost' : 'primary');
+    btn.style.marginTop = '10px';
+    btn.style.width = '100%';
+    btn.textContent = packing ? '⏳ Đang đóng gói...' : '🎁 Đóng gói ngay';
+    btn.disabled = packing;
+    btn.onclick = (e) => { e.stopPropagation(); startPacking(o); };
+    card.querySelector('.oc-foot').after(btn);
+    el.appendChild(card);
+  });
+  updateHUD();
+}
+
+$('#refreshOrders').onclick = () => {
+  if(S.coins < 15){ toast('Không đủ xu để làm mới 😢', 'warn'); beep(200,0.15,'square'); return; }
+  S.coins -= 15; S.orders = []; ensureOrders(); renderOrders();
+  beep(700,0.08); toast('🔄 Đã làm mới danh sách đơn!', 'ok');
+};
+
+/* =====================================================================
+   PACKING
+   ===================================================================== */
+function lighten(hex, amt){
+  const c = hex.replace('#','');
+  const n = parseInt(c,16);
+  let r = clamp((n>>16)+amt,0,255), g = clamp(((n>>8)&0xff)+amt,0,255), b = clamp((n&0xff)+amt,0,255);
+  return '#' + ((r<<16)|(g<<8)|b).toString(16).padStart(6,'0');
+}
+
+function startPacking(order){
+  if(S.pack){ toast('Bạn đang đóng gói một đơn khác rồi!', 'warn'); switchView('pack'); return; }
+  S.pack = {
+    order,
+    placed: [],
+    wrong: 0,
+    decor: {
+      color: BOX_COLORS[0],
+      wrap: null,
+      stickers: [],
+      ribbon: null,
+      perfume: null,
+      note: '',
+    },
+    tapeScore: 0,
+    shelf: buildShelf(order),
+  };
+  S.orders = S.orders.filter(o => o.id !== order.id);
+  ensureOrders();
+  $('#box').classList.remove('sealed');
+  applyBoxAppearance();
+  $('#boxRibbon').classList.remove('on');
+  $('#noteInput').value = '';
+  renderPack();
+  renderOrders();
+  switchView('pack');
+  beep(760, 0.09);
+  toast(`Bắt đầu đóng gói cho ${order.customer.name}!`, 'ok');
+}
+
+function buildShelf(order){
+  const need = order.items.map(id => ITEMS.find(i => i.id === id));
+  const others = shuffle(ITEMS.filter(i => !order.items.includes(i.id)));
+  const slots = Math.min(16, need.length + 8);
+  const decoys = others.slice(0, Math.max(0, slots - need.length));
+  return shuffle([...need, ...decoys]);
+}
+
+function renderPack(){
+  const info = $('#packOrderInfo');
+  const taskNote = $('#taskNote');
+  const box = $('#box');
+  if(!S.pack){
+    info.innerHTML = '📭 Chưa chọn đơn hàng — hãy qua tab <b>Đơn hàng</b> nhé!';
+    taskNote.style.display = 'none';
+    $('#shelf').innerHTML = '<p class="muted">Chưa có đơn</p>';
+    $('#boxItems').innerHTML = '';
+    $('#boxStickers').innerHTML = '';
+    $('#boxNote').classList.remove('show');
+    $('#boxScent').classList.remove('show');
+    $('#packFill').style.width = '0%';
+    $('#packText').textContent = '0/0';
+    $('#sealBtn').disabled = true;
+    box.classList.remove('big');
+    return;
+  }
+  const o = S.pack.order;
+  info.innerHTML = `<span style="font-size:19px">${o.customer.emoji}</span> ${o.customer.name} <span class="tag-person">${o.customer.personality}</span>`;
+  // Big box for 4+ items
+  box.classList.toggle('big', o.items.length >= 4);
+  // Task note
+  const pf = o.desiredPerfume ? PERFUMES.find(p=>p.id===o.desiredPerfume) : null;
+  taskNote.style.display = 'block';
+  taskNote.innerHTML = `
+    <h4>📋 Cần gói cho ${o.customer.name}</h4>
+    <ul>
+      ${o.itemObjs.map(i=>`<li>${i.emoji} ${i.name}</li>`).join('')}
+    </ul>
+    ${pf ? `<div class="pf-line">💐 Khách yêu cầu mùi: <b>${pf.emoji} ${pf.name}</b> — nhớ chọn đúng nhé, sai sẽ bị dị ứng!</div>` : ''}
+  `;
+  renderShelf();
+  renderBox();
+  renderDecorPanel();
+  updatePackProgress();
+}
+
+function renderShelf(){
+  const el = $('#shelf');
+  el.innerHTML = '';
+  if(!S.pack) return;
+  S.pack.shelf.forEach(it => {
+    const placed = S.pack.placed.some(p => p.id === it.id);
+    const b = document.createElement('button');
+    b.className = 'shelf-item' + (placed ? ' done' : '');
+    b.innerHTML = `<span class="emoji">${it.emoji}</span><span class="nm">${it.name}</span>`;
+    b.onclick = (e) => addItem(it, e);
+    el.appendChild(b);
+  });
+}
+
+function addItem(it, evt){
+  if(!S.pack) return;
+  const o = S.pack.order;
+  if(S.pack.placed.some(p => p.id === it.id)){ toast('Món này đã bỏ vào hộp rồi!', 'warn'); return; }
+  if(!o.items.includes(it.id)){
+    if(!S.upgrades.gloves) S.pack.wrong++;
+    else if(Math.random() < 0.5) S.pack.wrong++;
+    shake($('#box'));
+    beep(170, 0.18, 'sawtooth', 0.07);
+    toast('Ơ! Đơn này không có món đó 😅', 'err');
+    if(evt) burst(evt.clientX, evt.clientY, ['❌','💦'], 5);
+    return;
+  }
+  S.pack.placed.push({
+    id: it.id,
+    x: 12 + Math.random()*58,
+    y: 30 + Math.random()*42,
+    rot: Math.random()*40 - 20,
+  });
+  beep(920 + S.pack.placed.length*70, 0.07);
+  if(evt) burst(evt.clientX, evt.clientY, ['✨','⭐','💖'], 6);
+  renderBox();
+  renderShelf();
+  updatePackProgress();
+  if(S.pack.placed.length === o.items.length){
+    setTimeout(()=>{ toast('Đủ món rồi! Kéo thả để sắp xếp, rồi dán keo nhé 🎀', 'ok'); chord([900, 1100, 1400]); }, 200);
+  }
+}
+
+function renderBox(){
+  const bi = $('#boxItems');
+  bi.innerHTML = '';
+  if(!S.pack) return;
+
+  S.pack.placed.forEach((p, i) => {
+    const it = ITEMS.find(x => x.id === p.id);
+    const d = document.createElement('div');
+    d.className = 'box-item';
+    d.dataset.idx = i;
+    d.textContent = it.emoji;
+    d.style.left = p.x + '%';
+    d.style.top = p.y + '%';
+    d.style.transform = `translate(-50%,-50%) rotate(${p.rot}deg)`;
+    d.style.animation = 'drop .4s cubic-bezier(.34,1.56,.64,1) ' + (i*0.05) + 's backwards';
+    bi.appendChild(d);
+  });
+  setTimeout(setupDrag, 10);
+
+  const bs = $('#boxStickers');
+  bs.innerHTML = '';
+  S.pack.decor.stickers.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'box-sticker';
+    d.textContent = s.emoji;
+    d.style.left = s.x + '%';
+    d.style.top = s.y + '%';
+    d.style.transform = `rotate(${s.rot}deg)`;
+    d.style.animation = 'drop .35s cubic-bezier(.34,1.56,.64,1) ' + (i*0.04) + 's backwards';
+    bs.appendChild(d);
+  });
+
+  const rb = $('#boxRibbon');
+  const rData = RIBBONS.find(r => r.id === S.pack.decor.ribbon);
+  if(rData && rData.id){ rb.style.setProperty('--rb', rData.color); rb.classList.add('on'); }
+  else rb.classList.remove('on');
+
+  const noteEl = $('#boxNote');
+  if(S.pack.decor.note.trim()){
+    noteEl.textContent = S.pack.decor.note.slice(0, 80);
+    noteEl.classList.add('show');
+  } else noteEl.classList.remove('show');
+
+  const scentEl = $('#boxScent');
+  const pData = PERFUMES.find(p => p.id === S.pack.decor.perfume);
+  if(pData && pData.id){ scentEl.textContent = pData.cloud + '✨'; scentEl.classList.add('show'); }
+  else scentEl.classList.remove('show');
+}
+
+function setupDrag(){
+  const box = $('#box');
+  const items = $('#boxItems').querySelectorAll('.box-item');
+  items.forEach(el => {
+    el.onpointerdown = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.idx);
+      el.classList.add('dragging');
+      try{ el.setPointerCapture(e.pointerId); }catch(_){}
+      const boxRect = box.getBoundingClientRect();
+
+      const move = (ev) => {
+        const px = ((ev.clientX - boxRect.left) / boxRect.width) * 100;
+        const py = ((ev.clientY - boxRect.top) / boxRect.height) * 100;
+        const cx = clamp(px, 5, 95);
+        const cy = clamp(py, 15, 88);
+        el.style.left = cx + '%';
+        el.style.top = cy + '%';
+        S.pack.placed[idx].x = cx;
+        S.pack.placed[idx].y = cy;
+      };
+      const up = () => {
+        el.classList.remove('dragging');
+        el.removeEventListener('pointermove', move);
+        el.removeEventListener('pointerup', up);
+        el.removeEventListener('pointercancel', up);
+        try{ el.releasePointerCapture(e.pointerId); }catch(_){}
+      };
+      el.addEventListener('pointermove', move);
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+    };
+  });
+}
+
+function applyBoxAppearance(){
+  if(!S.pack) return;
+  const c = S.pack.decor.color;
+  $('#box').style.background = `linear-gradient(180deg, ${lighten(c,16)}, ${c})`;
+  const w = WRAPS.find(x => x.id === S.pack.decor.wrap);
+  const wrapEl = $('#boxWrap');
+  if(w && w.css){ wrapEl.style.background = w.css; wrapEl.style.opacity = '.55'; }
+  else { wrapEl.style.background = ''; wrapEl.style.opacity = '0'; }
+}
+
+function renderDecorPanel(){
+  // Swatches
+  const sw = $('#swatches'); sw.innerHTML = '';
+  BOX_COLORS.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'swatch' + (S.pack && S.pack.decor.color === c ? ' active' : '');
+    b.style.background = c;
+    b.onclick = () => { if(!S.pack) return; S.pack.decor.color = c; applyBoxAppearance(); renderDecorPanel(); beep(640, 0.06); };
+    sw.appendChild(b);
+  });
+
+  // Wraps
+  const wp = $('#wraps'); wp.innerHTML = '';
+  const wrapList = S.upgrades.premiumPaper ? WRAPS : WRAPS.slice(0, 4);
+  wrapList.forEach(w => {
+    const b = document.createElement('button');
+    b.className = 'wrap-btn' + (S.pack && S.pack.decor.wrap === w.id ? ' active' : '');
+    b.style.background = w.css || '#fdf7ff';
+    if(w.id) b.style.backgroundColor = '#fff';
+    b.innerHTML = `<span class="lbl">${w.name}</span>`;
+    b.onclick = () => { if(!S.pack) return; S.pack.decor.wrap = w.id; applyBoxAppearance(); renderDecorPanel(); beep(560, 0.06); };
+    wp.appendChild(b);
+  });
+
+  // Ribbons
+  const rw = $('#ribbons'); rw.innerHTML = '';
+  RIBBONS.forEach(r => {
+    const b = document.createElement('button');
+    b.className = 'ribbon-btn' + (r.id ? '' : ' none') + (S.pack && S.pack.decor.ribbon === r.id ? ' active' : '');
+    b.textContent = r.emoji;
+    b.title = r.label;
+    if(r.id) b.style.background = r.color;
+    b.onclick = () => { if(!S.pack) return; S.pack.decor.ribbon = r.id; renderBox(); renderDecorPanel(); beep(720, 0.07); };
+    rw.appendChild(b);
+  });
+
+  // Stickers
+  const sk = $('#stickers'); sk.innerHTML = '';
+  const list = S.upgrades.stickerpack ? [...STICKERS_BASE, ...STICKERS_VIP] : STICKERS_BASE;
+  list.forEach(e => {
+    const b = document.createElement('button');
+    b.className = 'sticker-btn';
+    b.textContent = e;
+    b.onclick = (ev) => {
+      if(!S.pack) return;
+      if(S.pack.decor.stickers.length >= 14){ toast('Hộp đầy sticker rồi! 😆', 'warn'); return; }
+      S.pack.decor.stickers.push({
+        emoji: e, x: 6 + Math.random()*78, y: 22 + Math.random()*66, rot: Math.random()*60 - 30,
+      });
+      renderBox();
+      beep(880 + Math.random()*300, 0.05);
+      if(ev) burst(ev.clientX, ev.clientY, [e], 3);
+    };
+    sk.appendChild(b);
+  });
+
+  // Perfumes (with request hint)
+  const pf = $('#perfumes'); pf.innerHTML = '';
+  const hint = $('#perfumeHint');
+  const wantedId = S.pack && S.pack.order.desiredPerfume;
+  if(wantedId){
+    const wp2 = PERFUMES.find(p=>p.id===wantedId);
+    if(hint) hint.textContent = `— khách muốn ${wp2.emoji} ${wp2.name}`;
+  } else if(hint) hint.textContent = '';
+
+  const perfumeList = S.upgrades.perfumeUp ? PERFUMES : PERFUMES.slice(0, 4);
+  perfumeList.forEach(p => {
+    const b = document.createElement('button');
+    const isReq = wantedId && p.id === wantedId;
+    b.className = 'perfume-btn' + (S.pack && S.pack.decor.perfume === p.id ? ' = active' : '') + (isReq ? ' req' S : '');
+    b.textContent = p..pemoji;
+ack    b.title = p.name + (.orderisReq ? ' (khách yêu c.itemsầu)' : '');
+    b.onclick = (ev) => {
+      if(!S.pack) return;
+      S.pack.decor.perfume = p.id;
+      renderBox();
+      renderDecorPanel();
+      spraySound();
+      const boxRect = $('#box').getBoundingClientRect();
+      if(p.id) for(let i=0;i<5;i++) setTimeout(()=>scentCloud(boxRect.left + boxRect.width/2 + (Math.random()*60-30), boxRect.top + 30, p.cloud), i*90);
+      if(p.id) toast(`💐 Đã xịt mùi ${p.name}!`, 'ok');
+    };
+    pf.appendChild(b);
+  });
+
+  // Note templates
+  const nt = $('#noteTemplates'); nt.innerHTML = '';
+  NOTE_TEMPLATES.forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'tmpl-btn';
+    b.textContent = t.slice(0, 22) + (t.length>22?'...':'');
+    b.title = t;
+    b.onclick = () => {
+      if(!S.pack) return;
+      S.pack.decor.note = t;
+      $('#noteInput').value = t;
+      renderBox();
+      beep(760, 0.05);
+    };
+    nt.appendChild(b);
+  });
+
+  // Restore note input safely
+  if(S.pack){
+    const cur = $('#noteInput').value;
+    if(cur !== S.pack.decor.note) $('#noteInput').value = S.pack.decor.note || '';
+  }
+}
+
+$('#noteInput').addEventListener('input', e => {
+  if(!S.pack) return;
+  S.pack.decor.note = e.target.value;
+  renderBox();
+});
+
+$('#clearDecor').onclick = () => {
+  if(!S.pack) return;
+  S.pack.decor = { color: BOX_COLORS[0], wrap: null, stickers: [], ribbon: null, perfume: null, note: '' };
+  $('#noteInput').value = '';
+  applyBoxAppearance();
+  renderBox();
+  renderDecorPanel();
+  toast('🧹 Đã xoá trang trí', 'info');
+};
+
+function updatePackProgress(){
+  if(!S.pack){ $('#packFill').style.width = '0%'; $('#packText').textContent = '0/0'; $('#sealBtn').disabled = true; return; }
+  const total.length;
+  const done = S.pack.placed.length;
+  $('#packFill').style.width = (done/total*100) + '%';
+  $('#packText').textContent = `${done}/${total}`;
+  $('#sealBtn').disabled = done < total;
+}
+
+$('#resetPack').onclick = () => {
+  if(!S.pack) return;
+  S.pack.placed = [];
+  S.pack.wrong = 0;
+  S.pack.decor.stickers = [];
+  S.pack.decor.ribbon = null;
+  $('#box').classList.remove('sealed');
+  renderBox(); renderShelf(); renderDecorPanel(); updatePackProgress();
+  toast('↺ Đã làm lại hộp quà', 'info');
+  beep(400, 0.08);
+};
+
+/* =====================================================================
+   TAPE MINIGAME
+   ===================================================================== */
+let tapeState = null;
+let tapeLastTs = 0;
+
+function openTape(){
+  if(!S.pack) return;
+  if(S.upgrades.robot){
+    S.pack.tapeScore = 3;
+    toast('🤖 Robot dán keo hoàn hảo!', 'ok');
+    chord([900, 1200, 1500]);
+    sealPackage();
+    return;
+  }
+  tapeState = { round: 0, good: 0, marker: 0, dir: 1, speed: 0.8, zoneStart: 0.3, zoneW: 0.26, running: true };
+  tapeLastTs = 0;
+  $('#tapeGood').textContent = '0';
+  nextTapeRound();
+  $('#tapeModal').classList.add('show');
+  requestAnimationFrame(tapeLoop);
+}
+
+function nextTapeRound(){
+  tapeState.round++;
+  tapeState.zoneStart = 0.08 + Math.random() * 0.64;
+  tapeState.marker = 0;
+  tapeState.dir = 1;
+  tapeState.speed = 0.72 + tapeState.round * 0.16;
+  $('#tapeRound').textContent = tapeState.round;
+  $('#tapeZone').style.left = (tapeState.zoneStart * 100) + '%';
+  $('#tapeZone').style.width = (tapeState.zoneW * 100) + '%';
+}
+
+function tapeLoop(ts){
+  if(!tapeState || !tapeState.running) return;
+  if(!tapeLastTs) tapeLastTs = ts;
+  const dt = Math.min((ts - tapeLastTs) / 1000, 0.05);
+  tapeLastTs = ts;
+  tapeState.marker += tapeState.dir * tapeState.speed * dt;
+  if(tapeState.marker > 1){ tapeState.marker = 1; tapeState.dir = -1; }
+  if(tapeState.marker < 0){ tapeState.marker = 0; tapeState.dir = 1; }
+  $('#tapeMarker').style.left = (tapeState.marker * 100) + '%';
+  requestAnimationFrame(tapeLoop);
+}
+
+function tapeStop(){
+  if(!tapeState || !tapeState.running) return;
+  const ok = tapeState.marker >= tapeState.zoneStart && tapeState.marker <= tapeState.zoneStart + tapeState.zoneW;
+  if(ok){
+    tapeState.good++;
+    $('#tapeGood').textContent = tapeState.good;
+    beep(1100, 0.09);
+    burst(window.innerWidth/2, window.innerHeight/2, ['✨','💫'], 6);
+  } else {
+    beep(200, 0.15, 'square', 0.06);
+    shake($('.tape-track'));
+  }
+  if(tapeState.round < 3) nextTapeRound();
+  else {
+    tapeState.running = false;
+    $('#tapeModal').classList.remove('show');
+    S.pack.tapeScore = tapeState.good;
+    setTimeout(() => { toast(`Băng keo: ${tapeState.good}/3 chuẩn! 📦`, tapeState.good >= 2 ? 'ok' : 'warn'); sealPackage(); }, 260);
+  }
+}
+
+$('#tapeBtn').onclick = tapeStop;
+document.addEventListener('keydown', e => {
+  if(e.code === 'Space' && $('#tapeModal').classList.contains('show')){ e.preventDefault(); tapeStop(); }
+});
+
+$('#sealBtn').onclick = () => {
+  if(!S.pack) return;
+  if(S.pack.placed.length < S.pack.order.items.length){ toast('Còn thiếu món kìa!', 'warn'); return; }
+  openTape();
+};
+
+/* =====================================================================
+   SEAL PACKAGE
+   ===================================================================== */
+function sealPackage(){
+  if(!S.pack) return;
+  const p = S.pack;
+  const o = p.order;
+
+  let stars tr = 5;
+  stars -= p.wrong * 0.5;
+  stars -= (3 - p.tapeScore) * 0.5;
+  let bonus = 0;
+  if(p.decor.stickers.length >= 2) bonus += 0.3;
+  if(p.decor.ribbon) bonus += 0.3;
+  if(p.decor.perfume) bonus += 0.3;
+  if(p.decor.note.trim()) bonus += 0.4;
+  if(p.decor.wrap) bonus += 0.2;
+
+  // ===== PERFUME REQUEST LOGIC =====
+  let allergyPenalty = 0;
+  let perfumeMatched = false;
+  if(o.desiredPerfume){
+    if(p.decor.perfume === o.desiredPerfume){
+      perfumeMatched = true;
+      bonus += 0.5; // extra reward
+    } else if(p.decor.perfume){
+      // wrong perfume → allergy!
+      allergyPenalty = 50 + S.level * 8;
+      stars = Math.max(1, stars - 2.5);
+    } else {
+      // forgot requested perfume
+      stars = Math.max(1, stars - 1);
+    }
+  }
+  stars = clamp(stars + bonus, 1, 5);
+  const rounded = Math.round(stars);
+
+  let coins = Math.round(o.reward * (0.55 + stars * 0.13));
+  if(perfumeMatched) coins = Math.round(coins * 1.2);
+  if(S.upgrades.vip) coins = Math.round(coins * 1.25);
+  coins = Math.max(0, coins - allergyPenalty);
+
+  const pkg = {
+    order: o,
+    stars: rounded,
+    coins,
+    decor: {...p.decor},
+    wrong: p.wrong,
+    tape: p.tapeScore,
+    perfumeMatched,
+    allergyPenalty,
+    id: uid(),
+  };
+
+  S.ready.push(pkg);
+  S.pack = null;
+
+  $('#box').classList.add('sealed');
+  chord([800, 1000, 1250, 1500]);
+  if(allergyPenalty > 0){
+    toast(`🤧 Khách bị dị ứng nước hoa! Trừ ${allergyPenalty}🪙`, 'err');
+    beep(180, 0.3, 'square', 0.08);
+  } else {
+    toast(`📦 Đã niêm phong đơn của ${o.customer.name}!`, 'ok');
+  }
+
+  setTimeout(() => {
+    $('#box').classList.remove('sealed');
+    renderPack();
+    renderOrders();
+    renderDeliverList();
+    updateHUD();
+    switchView('map');
+    toast('🛵 Qua bản đồ để giao hàng nào!', 'info');
+  }, 700);
+}
+
+/* =====================================================================
+   MAP & DELIVERY
+   ===================================================================== */
+function buildMap(){
+  const map = $('#map');
+  map.innerHTML = '';
+  [22, 50, 78].forEach(x => { const r = document.createElement('div'); r.className = 'road v'; r.style.left = x + '%'; map.appendChild(r); });
+  [45, 85].forEach(y => { const r = document.createElement('div'); r.className = 'road h'; r.style.top = y + '%'; map.appendChild(r); });
+  const shop = document.createElement('div');
+  shop.className = 'shop-house';
+  shop.style.left = '8%'; shop.style.top = '85%';
+  shop.innerHTML = `<span class="h-emoji">🏪</span><span class="h-name">Shop Cute</span>`;
+  map.appendChild(shop);
+  HOUSES.forEach((h, i) => {
+    const d = document.createElement('div');
+    d.className = 'house';
+    d.dataset.house = i;
+    d.style.left = h.x + '%'; d.style.top = h.y + '%';
+    d.innerHTML = `<span class="h-emoji">${h.emoji}</span><span class="h-name">${h.name}</span>`;
+    map.appendChild(d);
+  });
+  const sh = document.createElement('div');
+  sh.id = 'shipper';
+  sh.style.left = '8%'; sh.style.top = '85%';
+  sh.innerHTML = `🛵<span class="bubble" id="shipperBubble" style="display:none">Đang giao!</span>`;
+  map.appendChild(sh);
+}
+
+function buildPath(house){
+  const pts = [{x:8, y:85},{x:house.x, y:85},{x:house.x, y:house.y}];
+  const segs = []; let total = 0;
+  for(let i=0;i<pts.length-1;i++){
+    const a = pts[i], b = pts[i+1];
+    const len = Math.hypot(b.x-a.x, b.y-a.y);
+    if(len < 0.01) continue;
+    segs.push({a, b, len, start: total}); total += len;
+  }
+  return {segs, total};
+}
+
+function posAt(path, dist){
+  for(const s of path.segs){
+    if(dist <= s.start + s.len || s === path.segs[path.segs.length-1]){
+      const t = clamp((dist - s.start) / s.len, 0, 1);
+      return { x: s.a.x + (s.b.x - s.a.x) * t, y: s.a.y + (s.b.y - s.a.y) * t };
+    }
+  }
+  return {x: 8, y: 85};
+}
+
+function shipperSpeed(){
+  let sp = 13;
+  if(S.upgrades.shoes) sp *= 1.35;
+  if(S.upgrades.scooter) sp *= 1.8;
+  return sp;
+}
+
+function startDelivery(index){
+  if(S.delivering){ toast('Shipper đang giao đơn khác rồi!', 'warn'); return; }
+  const pkg = S.ready[index];
+  if(!pkg) return;
+  $$('.house').forEach(h => h.classList.remove('target'));
+  const houseIdx = HOUSES.indexOf(pkg.order.house);
+  const hEl = $(`.house[data-house="${houseIdx}"]`);
+  if(hEl) hEl.classList.add('target');
+  const sh = $('#shipper');
+  sh.classList.remove('returning');
+  sh.style.left = '8%'; sh.style.top = '85%';
+  S.delivering = {
+    pkg, index,
+    path: buildPath(pkg.order.house),
+    dist: 0, last: performance.now(), lastX: 8,
+  };
+  $('#shipperBubble').style.display = 'block';
+  $('#shipperBubble').textContent = 'Đi giao! 🚀';
+  beep(660, 0.09);
+  renderDeliverList();
+  animId = requestAnimationFrame(animateDelivery);
+}
+
+function animateDelivery(){
+  if(!S.delivering) return;
+  const d = S.delivering;
+  const now = performance.now();
+  const dt = Math.min((now - d.last) / 1000, 0.06);
+  d.last = now;
+  d.dist += shipperSpeed() * dt;
+  if(d.dist >= d.path.total){ arrive(); return; }
+  const pos = posAt(d.path, d.dist);
+  const sh = $('#shipper');
+  sh.style.left = pos.x + '%';
+  sh.style.top = pos.y + '%';
+  if(Math.abs(pos.x - d.lastX) > 0.15){
+    sh.style.transform = `translate(-50%,-50%) scaleX(${pos.x > d.lastX ? 1 : -1})`;
+    d.lastX = pos.x;
+  }
+  animId = requestAnimationFrame(animateDelivery);
+}
+
+function arrive(){
+  cancelAnimationFrame(animId);
+  const d = S.delivering;
+  if(!d) return;
+  const pkg = d.pkg;
+  S.delivering = null;
+  const idx = S.ready.indexOf(pkg);
+  if(idx > -1) S.ready.splice(idx, 1);
+  S.coins += pkg.coins;
+  S.deliveredCount++;
+  const xpGain = 12 + Math.round(pkg.stars * 7);
+  addXp(xpGain);
+  if(S.deliveredCount % 5 === 0){ S.day++; toast(`📅 Ngày ${S.day} bắt đầu!`, 'info'); }
+
+  chord([1000, 1250, 1500, 1800]);
+  burst(window.innerWidth/2, 200, ['🎉','💖','⭐','✨','🎊'], 16);
+  $('#shipperBubble').textContent = 'Giao xong! 🎉';
+  $$('.house').forEach(h => h.classList.remove('target'));
+
+  const review = makeReview(pkg);
+  S.reviews.unshift(review);
+
+  setTimeout(() => {
+    const sh = $('#shipper');
+    sh.classList.add('returning');
+    sh.style.transform = 'translate(-50%,-50%) scaleX(-1)';
+    sh.style.left = '8%'; sh.style.top = '85%';
+    setTimeout(() => {
+      $('#shipperBubble').style.display = 'none';
+      sh.style.transform = 'translate(-50%,-50%)';
+    }, 1250);
+  }, 900);
+
+  showRating(pkg, xpGain, review);
+  updateHUD();
+  renderDeliverList();
+  renderOrders();
+  renderReviews();
+}
+
+function makeReview(pkg){
+  const stars = pkg.stars;
+  const texts = REVIEW_TEXTS[clamp(stars,1,5)] || REVIEW_TEXTS[3];
+  let text = pick(texts);
+  // Allergy-based reaction
+  if(pkg.allergyPenalty > 0){
+    text = `Trời ơi shop xịt nhầm nước hoa làm mình bị dị ứng nặng luôn! 🤧 Không thể chấp nhận được!`;
+  } else if(pkg.perfumeMatched && stars >= 4){
+    const p = PERFUMES.find(x=>x.id===pkg.order.desiredPerfume);
+    text += ` Mùi ${p.name.toLowerCase()} đúng ý mình luôn, thơm cực! ${p.emoji}`;
+  } else if(pkg.decor.perfume && stars >= 4){
+    const p = PERFUMES.find(x=>x.id===pkg.decor.perfume);
+    text += ` Mùi ${p.name.toLowerCase()} thơm phức nữa! ${p.emoji}`;
+  }
+  if(pkg.decor.note.trim() && stars >= 4){
+    text += ' Note dễ thương lắm shop ơi 💌';
+  }
+  if(pkg.wrong > 0 && stars <= 3){
+    text += ' Mà hình như có món bị lộn thì phải...';
+  }
+  return {
+    id: uid(),
+    customer: pkg.order.customer,
+    stars,
+    text,
+    replied: false,
+    reply: null,
+    customerResponse: null,
+    ts: Date.now(),
+    orderId: pkg.order.id,
+  };
+}
+
+function showRating(pkg, xpGain, review){
+  const stars = pkg.stars;
+  const titles = {
+    5: ['🌟 Hoàn hảo tuyệt đối!', 'Khách hàng mê tít hộp quà của bạn!'],
+    4: ['😊 Rất hài lòng!', 'Gói hàng xinh xắn, giao nhanh nữa!'],
+    3: ['🙂 Tạm ổn!', 'Cũng được, nhưng còn thiếu chút xinh xắn.'],
+    2: ['😕 Hơi thất vọng', 'Hàng bị lộn hoặc gói chưa đẹp lắm...'],
+    1: ['😢 Khách buồn rồi', 'Cần cẩn thận hơn khi đóng gói nhé!'],
+  };
+  const t = titles[clamp(stars,1,5)];
+  $('#rateTitle').textContent = t[0];
+  $('#rateSub').textContent = t[1];
+  const sr = $('#rateStars');
+  sr.innerHTML = '';
+  for(let i=1;i<=5;i++){
+    const s = document.createElement('span');
+    s.textContent = i <= stars ? '⭐' : '☆';
+    s.style.animationDelay = (i*0.09) + 's';
+    s.style.opacity = i <= stars ? '1' : '.35';
+    sr.appendChild(s);
+  }
+  $('#rateCoins').textContent = '+' + pkg.coins + ' 🪙';
+  $('#rateXp').textContent = '+' + xpGain + ' XP';
+  const pen = $('#ratePenalty');
+  if(pkg.allergyPenalty > 0){
+    pen.style.display = 'block';
+    pen.textContent = `🤧 Dị ứng nước hoa: -${pkg.allergyPenalty} 🪙 (khách yêu cầu sai mùi)`;
+  } else {
+    pen.style.display = 'none';
+  }
+  $('#rateModal').classList.add('show');
+  S.currentReviewId = review.id;
+}
+
+$('#rateClose').onclick = () => { $('#rateModal').classList.remove('show'); beep(760, 0.07); };
+$('#rateGoReview').onclick = () => {
+  $('#rateModal').classList.remove('show');
+  switchView('reviews');
+  setTimeout(() => openReviewModal(S.currentReviewId), 200);
+};
+
+function renderDeliverList(){
+  const el = $('#deliverList');
+  el.innerHTML = '';
+  if(!S.ready.length){
+    el.innerHTML = '<p class="muted">📭 Chưa có gói nào.<br>Hãy đóng gói đơn hàng trước nhé!</p>';
+    updateHUD();
+    return;
+  }
+  S.ready.forEach((pkg, i) => {
+    const d = document.createElement('div');
+    d.className = 'deliver-card';
+    d.style.animationDelay = (i*0.06) + 's';
+    const starStr = '⭐'.repeat(pkg.stars) + '☆'.repeat(5-pkg.stars);
+    d.innerHTML = `
+      <div class="dc-head">
+        <div class="ava">${pkg.order.customer.emoji}</div>
+        <div>
+          <b>${pkg.order.customer.name}</b>
+          <small>${pkg.order.house.name}</small>
+        </div>
+      </div>
+      <div class="dc-body">
+        <span>${starStr}</span>
+        <span class="coin">+${pkg.coins} 🪙</span>
+      </div>
+    `;
+    const btn = document.createElement('button');
+    btn.className = 'btn primary';
+    btn.textContent = S.delivering ? '⏳ Shipper đang bận' : '🛵 Giao ngay';
+    btn.disabled = !!S.delivering;
+    if(S.delivering){ btn.classList.add('ghost'); btn.classList.remove('primary'); }
+    btn.onclick = () => startDelivery(i);
+    d.appendChild(btn);
+    el.appendChild(d);
+  });
+  updateHUD();
+}
+
+/* =====================================================================
+   REVIEWS
+   ===================================================================== */
+function renderReviews(){
+  const el = $('#reviewList');
+  el.innerHTML = '';
+  if(!S.reviews.length){
+    el.innerHTML = '<p class="muted">📭 Chưa có đánh giá nào.<br>Giao hàng để nhận đánh giá từ khách nhé!</p>';
+    updateHUD();
+    return;
+  }
+  S.reviews.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'review-card' + (r.replied ? '' : ' unread');
+    card.style.animationDelay = (i*0.05) + 's';
+    const starStr = '⭐'.repeat(r.stars) + '☆'.repeat(5-r.stars);
+    const isAngryResponse = r.customerResponse && /nổi giận|dị ứng|thất vọng|report|tônọng/.test(r.customerResponse);
+    card.innerHTML = `
+      <div class="rc-head">
+        <div class="ava">${r.customer.emoji}</div>
+        <div>
+          <b>${r.customer.name}</b>
+          <small>${r.customer.personality} · Đơn ${r.orderId}</small>
+        </div>
+        <div class="rc-stars">${starStr}</div>
+      </div>
+      <div class="rc-text">"${r.text}"</div>
+      ${r.reply ? `<div class="rc-reply"><b>🏪 Bạn trả lời:</b> ${r.reply}</div>` : ''}
+      ${r.customerResponse ? `<div class="rc-cust-response${isAngryResponse?' angry':''}">${r.customer.emoji} <b>${r.customer.name}:</b> ${r.customerResponse}</div>` : ''}
+    `;
+    const actions = document.createElement('div');
+    actions.className = 'rc-actions';
+    if(!r.replied){
+      const b = document.createElement('button');
+      b.className = 'btn primary';
+      b.style.width = '100%';
+      b.textContent = '💌 Trả lời khách';
+      b.onclick = () => openReviewModal(r.id);
+      actions.appendChild(b);
+    } else {
+      const b = document.createElement('button');
+      b.className = 'btn ghost';
+      b.style.width = '100%';
+      b.textContent = '✅ Đã trả lời';
+      b.disabled = true;
+      actions.appendChild(b);
+    }
+    card.appendChild(actions);
+    el.appendChild(card);
+  });
+  updateHUD();
+}
+
+const REPLY_TEMPLATES = [
+  'Cảm ơn bạn đã ủng hộ shop nhiều lắm 💖',
+  'Xin lỗi bạn vì trải nghiệm chưa tốt, shop sẽ cố gắng hơn 🙏',
+  'Dạ shop cảm ơn bạn rất nhiều, hẹn gặp lại! 🌸',
+  'Shop xin lỗi vì sự bất tiện, mong bạn thông cảm ạ 😢',
+  'Cảm ơn bạn nha, shop vui lắm vì bạn hài lòng! 🥰',
+  'Dạ shop ghi nhận và sẽ khắc phục ngay ạ 🙇',
+];
+
+function openReviewModal(id){
+  const r = S.reviews.find(x => x.id === id);
+  if(!r) return;
+  S.currentReviewId = id;
+  $('#revSub').textContent = `Trả lời ${r.customer.name} nhé!`;
+  $('#revAvaBox').innerHTML = `<span style="font-size:38px">${r.customer.emoji}</span><div style="text-align:left"><b style="font-family:'Baloo 2'">${r.customer.name}</b><br><small style="color:var(--brown-soft);font-weight:600">${'⭐'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</small></div>`;
+  $('#revMsg').innerHTML = `<b>Đánh giá</b>"${r.text}"`;
+  $('#replyInput').value = '';
+
+  const rt = $('#replyTemplates');
+  rt.innerHTML = '';
+  REPLY_TEMPLATES.forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'tmpl-btn';
+    b.textContent = t.slice(0, 24) + (t.length>24?'...':'');
+    b.title = t;
+    b.onclick = () => { $('#replyInput').value = t; beep(720, 0.05); };
+    rt.appendChild(b);
+  });
+
+  $('#reviewModal').classList.add('show');
+}
+
+$('#revSkip').onclick = () => { $('#reviewModal').classList.remove('show'); beep(400, 0.06); };
+
+$('#revSend').onclick = () => {
+  const r = S.reviews.find(x => x.id === S.currentReviewId);
+  if(!r) return;
+  const text = $('#replyInput').value.trim();
+  if(!text){ toast('Bạn chưa viết gì cả! 😅', 'warn'); beep(200, 0.1, 'square'); return; }
+  r.reply = text;
+  r.replied = true;
+
+  const score = analyzeSentiment(text, r);
+  const reaction = getCustomerResponse(r, score);
+  r.customerResponse = reaction.text;
+
+  let coinsGain = 0, xpGain = 0;
+  if(reaction.type === 'happy'){
+    coinsGain = 25 + r.stars * 4;
+    xpGain = 8 + r.stars * 2;
+    if(S.upgrades.vip) coinsGain = Math.round(coinsGain * 1.25);
+    S.coins += coinsGain;
+    addXp(xpGain);
+    chord([900, 1150, 1400, 1600]);
+    burst(window.innerWidth/2, 200, ['💖','✨','🎉','⭐'], 14);
+  } else if(reaction.type === 'neutral'){
+    coinsGain = 8; xpGain = 3;
+    S.coins += coinsGain;
+    addXp(xpGain);
+    beep(720, 0.1);
+  } else {
+    // angry — big penalty
+    coinsGain = -30 - r.stars * 3;
+    S.coins = Math.max(0, S.coins + coinsGain);
+    beep(180, 0.22, 'square', 0.07);
+    shake($('#reviewModal'));
+  }
+
+  $('#reviewModal').classList.remove('show');
+  showCustomerReaction(r, reaction, coinsGain, xpGain);
+  renderReviews();
+  updateHUD();
+};
+
+function analyzeSentiment(text, review){
+  const pos = ['cảm ơn','xin lỗi','vui','yêu','thương','tốt','đẹp','ok','quý','dễ thương','tuyệt','hài lòng','chân thành','trân trọng','cố gắng','hoan nghênh','hân hạnh','mến','thân thiện','đáng yêu','hihi','haha','iu'];
+  const neg = ['tệ','dở','chậm','lộn','sai','dối','lừa','kém','xấu','khó chịu','vớ vẩn','rác','phốt','báo','cáo','chửi','không cần','đừng','thôi đi','bực','tức','ghét'];
+  // Cọc cằn / thô lỗ → phạt nặng
+  const rude = ['đm','dm','đmm','vcl','vl','vkl','cút','đồ ngu','mẹ m','bố m','chó','ngu','đần','thần kinh','câm','im đi','dkm','dcm','đ éo','đéo','vãi','xàm','nhảm'];
+  const lower = text.toLowerCase();
+  let score = 0;
+  pos.forEach(w => { if(lower.includes(w)) score += 2; });
+  neg.forEach(w => { if(lower.includes(w)) score -= 3; });
+  let rudeCount = 0;
+  rude.forEach(w => { if(lower.includes(w)){ rudeCount++; score -= 12; } });
+  if(rudeCount > 0) score -= rudeCount * 5;
+  if(text.length < 4) score -= 1;
+  if(text.length > 30 && score > 0) score += 1;
+  return score;
+}
+
+function getCustomerResponse(review, score){
+  const c = review.customer;
+  const happy = [
+    `Cảm ơn shop nhiều ạ! ${c.emoji} Thương shop ghê!`,
+    `Shop dễ thương quá, mình sẽ ủng hộ dài dài! 💖`,
+    `Nghe shop nói mà ấm lòng 🥰 Hẹn gặp lại!`,
+    `Shop trả lời có tâm ghê! 5 sao nè ⭐⭐⭐⭐⭐`,
+    `Mình đã giới thiệu shop cho bạn bè rồi nha! ✨`,
+    `Shop chu đáo ghê, yêu shop lắm! 💕`,
+  ];
+  const neutral = [
+    `Dạ vâng ạ, mình ghi nhận 😊`,
+    `Ok shop, cảm ơn đã phản hồi.`,
+    `Mình hiểu rồi, hẹn shop lần sau.`,
+    `Cũng được ạ.`,
+  ];
+  const angry = [
+    `Nói chuyện kiểu gì vậy??? Bộ shop không biết tôn trọng khách à?! 😡`,
+    `Thái độ vậy mà cũng làm ăn được hả? Tôi sẽ report shop!`,
+    `Không ngờ shop lại như vậy, thất vọng vô cùng! 😤`,
+    `Chửi khách hả? Tôi sẽ cho mọi người biết bộ mặt thật của shop!`,
+    `Hừ! Đừng hòng tôi quay lại đây lần nữa!!!`,
+    `Shop cọc cằn quá, khách như tôi không đáng được đối xử vậy!! 😠`,
+  ];
+
+  let type = 'neutral';
+  if(score >= 2) type = 'happy';
+  else if(score <= -2) type = 'angry';
+  else if(score >= 0 && review.stars >= 4) type = 'happy';
+  else if(score <= 0 && review.stars <= 2) type = 'angry';
+
+  // Rude always angers regardless
+  if(score <= -10) type = 'angry';
+
+  if(c.personality === 'vui vẻ' || c.personality === 'hài hước' || c.personality === 'dễ tính'){
+    if(type === 'angry' && Math.random() < 0.4) type = 'neutral';
+  }
+  if(c.personality === 'khó tính' || c.personality === 'nghiêm khắc' || c.personality === 'cộc cằn'){
+    if(type === 'neutral' && score < 1) type = 'angry';
+  }
+
+  const texts = type === 'happy' ? happy : type === 'angry' ? angry : neutral;
+  return { type, text: pick(texts) };
+}
+
+function showCustomerReaction(review, reaction, coins, xp){
+  const titles = {
+    happy: '💖 Khách vui vẻ!',
+    neutral: '😐 Khách phản hồi nhẹ nhàng',
+    angry: '😡 Khách nổi giận!!',
+  };
+  $('#reactTitle').textContent = titles[reaction.type];
+  $('#reactAva').textContent = review.customer.emoji;
+  $('#reactText').textContent = `${review.customer.name}: ${reaction.text}`;
+  $('#reactText').className = 'customer-reaction' + (reaction.type === 'angry' ? ' angry' : '');
+  if(coins !== 0 || xp !== 0){
+    $('#reactReward').style.display = 'block';
+    $('#reactCoins').textContent = (coins >= 0 ? '+' : '') + coins + ' 🪙';
+    $('#reactXp').textContent = (xp >= 0 ? '+' : '') + xp + ' XP';
+  } else {
+    $('#reactReward').style.display = 'none';
+  }
+  if(reaction.type === 'angry'){ shake($('#reactModal')); beep(160, 0.3, 'square', 0.07); }
+  $('#reactModal').classList.add('show');
+}
+
+$('#reactClose').onclick = () => { $('#reactModal').classList.remove('show'); beep(700, 0.07); };
+
+/* =====================================================================
+   SHOP
+   ===================================================================== */
+function renderShop(){
+  const el = $('#shopList');
+  el.innerHTML = '';
+  SHOP_ITEMS.forEach(item => {
+    const owned = !!S.upgrades[item.id];
+    const card = document.createElement('div');
+    card.className = 'shop-card' + (owned ? ' owned' : '');
+    card.innerHTML = `
+      <span class="sc-emoji">${item.emoji}</span>
+      <h4>${item.name}</h4>
+      <p>${item.desc}</p>
+      <div class="price">${owned ? '—' : item.price + ' 🪙'}</div>
+    `;
+    if(!owned){
+      const b = document.createElement('button');
+      b.className = 'btn primary';
+      b.style.width = '100%';
+      b.textContent = '🛒 Mua';
+      b.onclick = () => buyUpgrade(item);
+      card.appendChild(b);
+    }
+    el.appendChild(card);
+  });
+  updateHUD();
+}
+
+function buyUpgrade(item){
+  if(S.upgrades[item.id]) return;
+  if(S.coins < item.price){ toast('Không đủ xu rồi 😢 Kiếm thêm nhé!', 'warn'); beep(200, 0.15, 'square'); return; }
+  S.coins -= item.price;
+  S.upgrades[item.id] = true;
+  chord([900, 1150, 1400]);
+  burst(window.innerWidth/2, window.innerHeight/2, ['🛍️','✨','💖','🎉'], 14);
+  toast(`✅ Đã mua ${item.name}!`, 'ok');
+  renderShop();
+  updateHUD();
+  if(item.id === 'stickerpack' || item.id === 'perfumeUp' || item.id === 'premiumPaper'){
+    if(S.pack) renderDecorPanel();
+    // Re-generate orders so they use new perfume requests
+    if(item.id === 'perfumeUp'){ S.orders = S.orders.map(o => o.desiredPerfume ? o : {...o, desiredPerfume: pick(PERFUMES.filter(p=>p.id)).id}); renderOrders(); }
+  }
+  if(item.id === 'ad'){ S.orders.push(makeOrder(), makeOrder()); renderOrders(); }
+}
+
+/* =====================================================================
+   VIEWS
+   ===================================================================== */
+function switchView(name){
+  S.view = name;
+  $$('.view').forEach(v => v.classList.remove('active'));
+  $('#view-' + name).classList.add('active');
+  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === name));
+  if(name === 'orders') renderOrders();
+  if(name === 'pack') renderPack();
+  if(name === 'map') renderDeliverList();
+  if(name === 'reviews') renderReviews();
+  if(name === 'shop') renderShop();
+}
+$$('.tab').forEach(t => {
+  t.onclick = () => { switchView(t.dataset.view); beep(620, 0.05); };
+});
+
+$('#soundBtn').onclick = () => {
+  S.sound = !S.sound;
+  $('#soundBtn').textContent = S.sound ? '🔊' : '🔇';
+  $('#soundBtn').classList.toggle('on', S.sound);
+  if(S.sound) beep(880, 0.08);
+  toast(S.sound ? '🔊 Bật âm thanh' : '🔇 Tắt âm thanh', 'info');
+};
+$('#musicBtn').onclick = () => {
+  if(S.music) { stopMusic(); toast('🎵 Tắt nhạc nền', 'info'); }
+  else { try{ getCtx().resume(); }catch(e){} startMusic(); toast('🎵 Bật nhạc nền anime', 'ok'); }
+  $('#musicBtn').classList.toggle('on', S.music);
+};
+
+/* =====================================================================
+   INIT
+   ===================================================================== */
+function init(){
+  buildMap();
+  ensureOrders();
+  renderOrders();
+  renderPack();
+  renderDeliverList();
+  renderReviews();
+  renderShop();
+  renderDecorPanel();
+  updateHUD();
+  $('#soundBtn').classList.add('on');
+  setTimeout(() => toast('👋 Chào mừng đến Shop 2.0!', 'ok'), 400);
+  setTimeout(() => toast('🎵 Bấm nút 🎵 trên cùng để bật nhạc nền anime nhé!', 'info'), 1800);
+  setTimeout(() => toast('💐 Mua "Bộ nước hoa" trong shop để khách yêu cầu mùi cụ thể!', 'info'), 3400);
+}
+
+init();
+</script>
+</body>
+</html>
